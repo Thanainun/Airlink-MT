@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'Exo';
+  font-style: normal;
+  font-weight: 400;
+  src: url(http://themes.googleusercontent.com/static/fonts/exo/v2/dyHAhrKQv_y08D_BHFQ0zA.eot);
+  src: local('Exo Regular'), local('Exo-Regular'), url(http://themes.googleusercontent.com/static/fonts/exo/v2/dyHAhrKQv_y08D_BHFQ0zA.eot) format('embedded-opentype'), url(http://themes.googleusercontent.com/static/fonts/exo/v2/wocyXRLWPo2Av-yUTmmbTA.woff) format('woff');
+}

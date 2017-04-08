@@ -1,0 +1,10 @@
+input#username{
+	width:237px;
+	height:34px;
+	background-image:url(../images/@WiFi_16.png)
+	}
+input#password{
+	width:237px;
+	height:35px;
+	background-image:url(../images/@WiFi_22.png)
+	}

@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<title>DUYDUI Server &#9679; Hotspot Logout</title>
+	
+    <style type="text/css" media="all">
+		@import url("css/style.css");
+		@import url("css/jquery.wysiwyg.css");
+		@import url("css/facebox.css");
+		@import url("css/visualize.css");
+		@import url("css/date_input.css");
+    </style>
+	
+	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=7" /><![endif]-->
+	<!--[if lt IE 8]><style type="text/css" media="all">@import url("css/ie.css");</style><![endif]-->
+
+	<!--[if IE]><script type="text/javascript" src="js/excanvas.js"></script><![endif]-->
+	
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.img.preload.js"></script>
+	<script type="text/javascript" src="js/jquery.filestyle.mini.js"></script>
+	<script type="text/javascript" src="js/jquery.wysiwyg.js"></script>
+	<script type="text/javascript" src="js/jquery.date_input.pack.js"></script>
+
+	<script type="text/javascript" src="js/facebox.js"></script>
+	<script type="text/javascript" src="js/jquery.visualize.js"></script>
+	<script type="text/javascript" src="js/jquery.select_skin.js"></script>
+	<script type="text/javascript" src="js/ajaxupload.js"></script>
+	<script type="text/javascript" src="js/jquery.pngfix.js"></script>
+	<script type="text/javascript" src="js/custom.js"></script>
+
+</head>
+
+
+
+
+
+<body>
+<script language="JavaScript">
+<!--
+    function openLogin() {
+	if (window.name != 'hotspot_logout') return true;
+	open('$(link-login)', '_blank', '');
+	window.close();
+	return false;
+    }
+//-->
+</script>	
+	<div id="hld">
+	
+						
+			
+			<div class="block small center login">
+			
+				<div class="block_head">
+					<div class="bheadl"></div>
+
+					<div class="bheadr"></div>
+					
+					<center style="font-size: 16px; font-weight: bold; text-align: center; color: #3AA3E6;">
+				  <center>  <span style="color: #FF5700">DUYDUI Server WiFi Hotspot </span></center>
+				</div>		<!-- .block_head ends -->
+				
+				
+				
+				<div class="block_content">
+<center><h3>ท่านได้ออกจากระบบแล้วค่ะ? ขอบคุณที่ใช้บริการค่ะ</h3></center>
+		
+			<table cellpadding="0" cellspacing="0" width="100%">
+						
+							<tr>
+								<th width="150">ข้อมูล</th>
+								<th>รายละเอียด</th>							
+							</tr>
+							
+							<tr>					
+								<td><a href="#">ชื่อผู้ใช้งาน  :</a></td>
+								<td><font color="red">$(username)</font></td>							
+							</tr>
+
+							
+							<tr>							
+								<td><a href="#">ไอพีแอดเดรส :</a></td>
+								<td><font color="red">$(ip)</font></td>							
+							</tr>
+						
+							<tr>						
+								<td><a href="#">แม็คแอดเดรส :</a></td>
+								<td><font color="red">$(mac)</font></td>			
+							</tr>
+							
+							<tr>		
+								<td><a href="#">เวลาที่ใช้งาน :</a></td>
+								<td><font color="red">$(uptime)</font><br><a href="#">d=วัน &#9679; h=ชั่วโมง  &#9679; m=นาที &#9679; s=วินาที</font></td>
+							</tr>
+						$(if session-time-left)
+							<tr>		
+								<td><a href="#">เวลาที่เหลือ :</a></td>
+								<td><font color="red">$(session-time-left)</font><br><a href="#">d=วัน &#9679; h=ชั่วโมง  &#9679; m=นาที &#9679; s=วินาที</font></td>
+							</tr>
+						$(endif)
+							<tr>		
+								<td><a href="#">อัพโหลด/ดาว์โหลด  :</a></td>
+								<td><font color="red">$(bytes-in-nice) / $(bytes-out-nice)</font></td>
+							</tr>
+							
+						</table>
+		   <form action="$(link-login)" name="login" onSubmit="return openLogin()">
+					 <center> <p><input type="submit" class="submit small" value="เข้าสู่ระบบ" title="เข้าสู่ระบบ"> </p> </center>
+			
+
+					</form>
+				
+				</div>		
+				<div class="bendl"></div>
+
+				<div class="bendr"></div>
+				
+			</div>		
+			
+			
+			
+			
+		
+				
+			</div>
+		
+		
+		</div>						
+		
+	</div>		
+	
+</body>
+</html>

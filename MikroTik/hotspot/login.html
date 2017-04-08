@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" style="background-color: rgb(235, 60, 0);"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>DUYDUI Server WiFi Hotspot > login</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="-1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="SHORTCUT ICON" href="/images/favicon_a.ico">
+  <base href=".">  <link href="css/login.ltr.css" rel="stylesheet" type="text/css">
+          <!--[if lte IE 10]>
+  <link href="/css/login.ie.css" rel="stylesheet" type="text/css" />
+  <![endif]-->
+  <!--[if lte IE 7]>
+  <style type='text/css'>
+    .ie_legacy { display: none; }
+    body { background-color: #0072C6; }
+  </style>
+  <![endif]-->
+    <script type="text/javascript">
+      if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+          var msViewportStyle = document.createElement("style");
+          msViewportStyle.appendChild(
+              document.createTextNode(
+                  "@-ms-viewport{width:auto!important}"
+              )
+          );
+          msViewportStyle.appendChild(
+              document.createTextNode(
+                  "@-ms-viewport{height:auto!important}"
+              )
+          );
+          document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+      }
+    </script><style type="text/css"></style>
+    <script src="js/jquery.1.5.1.min.js" type="text/javascript"></script>
+    <script src="js/aad.login.js" type="text/javascript"></script>
+      <script src="js/jquery.easing.1.3.js" type="text/javascript"></script>
+  <style> body { display: none; }</style>
+</head>
+<body style="display: block;">
+	$(if chap-id)
+		<form name="sendin" action="$(link-login-only)" method="post">
+			<input type="hidden" name="username" />
+			<input type="hidden" name="password" />
+			<input type="hidden" name="dst" value="http://172.0.0.1/status" />
+			<input type="hidden" name="popup" value="true" />
+		</form>
+		
+		<script type="text/javascript" src="/md5.js"></script>
+		<script type="text/javascript">
+		<!--
+			function doLogin() {
+			document.sendin.username.value = document.login.username.value;
+			document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+			document.sendin.submit();
+			return false;
+			}
+		//-->
+		</script>
+	$(endif)
+  <script>
+    if (self == top) {
+      var body = $('body');
+      body.css('display', 'block');
+    } else {
+      top.location = self.location;
+    }
+  </script>
+  <div id="background_branding_container" class="ie_legacy" style="background: rgb(235, 60, 0);">
+    <img id="background_background_image" alt="ภาพประกอบสำหรับ Microsoft Online Services" src="images/illustration.jpg" style="width: 880px; height: 669px; visibility: visible; display: block; background-color: rgb(235, 60, 0);">
+    <div id="auto_low_bandwidth_background_notification" class="smalltext">It looks like you're on a slow connection. We've disabled some images to speed things up.</div>
+	<div id="background_company_name_text" class="background_title_text" style="opacity: 0;">ลงชื่อเข้าใช้ Microsoft Online Services</div>
+  </div>
+  <div id="background_page_overlay" class="overlay ie_legacy" aria-hidden="true" style="visibility: visible; display: none; background-color: rgb(235, 60, 0);">
+  </div>
+  <div id="login_no_script_panel" class="login_panel" aria-hidden="true" style="display: none;">
+    <table class="login_panel_layout" style="height: 100%;">
+      <tbody><tr class="login_panel_layout_row" style="height: 100%;">
+        <td id="login_panel_left"></td>
+        <td id="login_panel_center">
+    <noscript>
+      &lt;style&gt;body { display: block; }&lt;/style&gt;
+      &lt;div class="login_inner_container no_js"&gt;
+        &lt;div class="inner_container cred"&gt;
+          &lt;div class="login_workload_logo_container"&gt;
+          &lt;/div&gt;
+          &lt;div id="login_no_js_error_container" class="login_full_error_container"&gt;
+            &lt;div id="login_no_js_error_text" class="cta_text 1"&gt;
+               &lt;H1&gt;เราไม่สามารถลงชื่อเข้าใช้ให้คุณ :-(&lt;/H1&gt;&lt;p&gt;ขณะนี้เบราว์เซอร์ของคุณถูกตั้งค่าให้บล็อก JavaScript คุณต้องอนุญาตให้ JavaScript ใช้บริการนี้&lt;/p&gt;&lt;p&gt;เมื่อต้องการเรียนรู้วิธีการอนุญาต JavaScript หรือหากต้องการทราบว่า เบราว์เซอร์สนับสนุน JavaScript หรือไม่ โปรดตรวจสอบวิธีใช้แบบออนไลน์ในเว็บเบราว์เซอร์ของคุณ&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;div id="footer_links_container" class="login_footer_container"&gt;
+      &lt;div class="footer_inner_container"&gt;
+      &lt;table id="footer_table"&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;div class="footer_glyph"&gt;
+              &lt;img src="images/blueair.png"
+                  class="footer_glyph" alt="ภาพประกอบสำหรับ Azure Active Directory"&gt;&lt;/img&gt;
+            &lt;/div&gt;
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;div class="footer tinytext"&gt;
+              &lt;span class="corporate_footer"&gt;
+                &lt;span class="branding_footer"&gt;บัญชีผู้ใช้ที่ใช้การได้ที่นี่สามารถใช้ได้ทุกแห่งที่มีไอคอนนี้&lt;/span&gt;
+                                &lt;span class="corp_link" id="footer_copyright_link"&gt;© 2014 Microsoft&lt;/span&gt;
+                   
+              &lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id="login_prefetch_container" class="no_display"&gt;&lt;/div&gt;
+        &lt;/td&gt;
+        &lt;td id="login_panel_right"&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+    </noscript>
+        </td>
+        <td id="login_panel_right">
+        </td>
+      </tr>
+    </tbody></table>
+  </div>    
+  <div id="login_panel" class="login_panel" style="display: block;">
+    <table class="login_panel_layout" style="height: 100%;">
+      <tbody><tr class="login_panel_layout_row" style="height: 100%;">
+        <td id="login_panel_left"></td>
+        <td id="login_panel_center">
+    <script type="text/javascript">
+      $(document).ready(function () {
+        if ($.support.cookies) {
+          $('.login_inner_container').removeClass('no_display');
+          $('.no_cookie').addClass('no_display');
+        } else {
+          $('.login_inner_container').addClass('no_display');
+          $('.no_cookie').removeClass('no_display');
+        }
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        
+        
+                Constants.DEFAULT_LOGO = 'images/logo.png';
+        Constants.DEFAULT_LOGO_ALT = 'ลงชื่อเข้าใช้';
+                        Constants.DEFAULT_ILLUSTRATION = 'images/illustration.jpg';
+        Constants.DEFAULT_BACKGROUND_COLOR = '#EB3C00';
+                 
+        Context.TenantBranding.workload_branding_enabled = true;
+        User.UpdateLogo(Constants.DEFAULT_LOGO, Constants.DEFAULT_LOGO_ALT);
+        User.UpdateBackground(Constants.DEFAULT_ILLUSTRATION, Constants.DEFAULT_BACKGROUND_COLOR);
+                        Context.TenantBranding.whr_key = '';
+                jQuery('img#logo_img').attr('src', '');
+        Context.use_instrumentation = true; 
+        User.moveFooterToBottom('250px');
+      });
+    </script>
+    <div class="login_inner_container">
+      <div class="inner_container cred" style="height: 380px;">
+        <div class="login_workload_logo_container">
+		</div>
+		<span style="color: #3AA3E6">DUYDUI Server WiFi Hotspot </span></center><br>
+		<div id="login_cta_text" class="cta_message_text 1" ><span style="color: #FF5700">IP Address: $(ip) </span><br>Mac Address: $(mac)&nbsp;</div>
+        <div id="login_error_container" class="login_error_container">		
+        </div>
+        <div class="login_cta_container normaltext">
+			
+            <div id="login_cta_text" class="cta_message_text 1">ลงชื่อเข้าใช้ด้วยบัญชีผู้ใช้ของคุณ </div>
+			$(if error)
+			<div id="cta_client_error_text" class="cta_message_text 1 error_msg errortext" aria-hidden="true">$(error)</div>
+			$(endif)
+        </div>
+        <ul class="login_cred_container">
+          <li class="login_cred_field_container">
+			<form id="credentials" name="login" action="$(link-login-only)" method="post"
+				$(if chap-id) onSubmit="return doLogin()" $(endif)>
+				<input type="hidden" name="dst" value="$(link-orig)" />
+				<input type="hidden" name="popup" value="true" />
+				<div id="cred_userid_container" class="login_textfield textfield">
+					<span class="input_field textfield">
+					  <label for="cred_userid_inputtext" class="no_display" aria-hidden="true">บัญชีผู้ใช้</label>
+					  <div class="input_border">
+					  <input tabindex="1" id="cred_userid_inputtext" class="login_textfield textfield required normaltext" placeholder="ชื่อบัญชีผู้ใช้ " type="text" name="username" spellcheck="false" aria-label="บัญชีผู้ใช้" value="$(username)" autocomplete="off">
+					  </div>
+					</span>
+				</div>
+				<div id="redirect_dots_animation" class="progress" style="visibility: hidden;">
+                <div class="pip"></div>
+                <div class="pip"></div>
+                <div class="pip"></div>
+                <div class="pip"></div>
+                <div class="pip"></div>
+              </div>
+				<div id="cred_password_container" class="login_textfield textfield" style="opacity: 1;">
+                <span class="input_field textfield">
+                  <label for="cred_password_inputtext" class="no_display" aria-hidden="true">รหัสผ่าน</label>
+                  <div class="input_border">
+                  <input tabindex="2" id="cred_password_inputtext" class="login_textfield textfield required normaltext" placeholder="รหัสผ่าน" spellcheck="false" aria-label="รหัสผ่าน" alt="รหัสผ่าน" type="password" name="password" value="">
+                  </div>
+                </span>
+              </div>
+
+
+
+
+          </li>
+          <li class="login_cred_options_container">
+            <div id="cred_kmsi_container" class="subtext normaltext">
+              <span class="input_field ">
+                <input tabindex="10" id="cred_keep_me_signed_in_checkbox" type="checkbox" value="0" name="persist">
+                <label id="keep_me_signed_in_label_text" for="cred_keep_me_signed_in_checkbox" class="persist_text">ให้ฉันลงชื่อเข้าใช้เสมอ</label>
+              </span>
+            </div>
+			<input id="cred_sign_in_button" tabindex="11" type="submit" value="ลงชื่อเข้าใช้" class="button normaltext" />
+
+            <div id="recover_container" class="subtext smalltext" style="opacity: 1;" >
+              <span>			   
+			   <p><a href="http://172.0.0.1:8888/hotspot/index.php/signup" class="TextSemiBold"><img src="images/icon/ture.png" width="45" height="35"  alt=""/>&nbsp;ลงทะเบียน</a></p>
+			   <p><a href="http://172.0.0.1:8888/hotspot/index.php/forgot_password" class="TextSemiBold"><img src="images/icon/resetpassword.png" width="35" height="25"  alt=""/>&nbsp;ลืมรหัสผ่าน</a></p>
+			   <p><a href="http://172.0.0.1:8888/hotspot/index.php/dashboard" class="TextSemiBold"> <img src="images/icon/truemoney.png" width="60" height="30"  alt=""/>&nbsp; เติมเงินผ่านทรูมันนี่ได้แล้ววันนี้</a></p>			   
+			   <p><a href="http://172.0.0.1:8888/repass" class="TextSemiBold"> <img src="images/icon/changepasswd.png" width="35" height="25"  alt=""/>&nbsp;เปลี่ยนรหัสผ่าน กดตรงนี้</a></p>
+			   <p><a href="http://172.0.0.1:8888/clearuser" class="TextSemiBold"><img src="images/icon/remove.png" width="35" height="25"  alt=""/>&nbsp;เคลียร์ผู้ใช้งานที่ค้างในระบบ</a></p>
+               
+              </span>
+				<br>
+			  <span>
+			  <p><b>ข้อควรจำ </b></p>
+              <p>ระบบมีการจัดเก็บ Log File ตาม พรบ. คอมพิวเตอร์ 2550</p>
+			  <p>การออกจากระบบ พิมพ์   => <b>172.0.0.1</b>  <= แล้วกดปุ่มออกจากระบบ</p>
+			  
+			  </span>
+			</form>			  
+            </div>
+               
+          </li>
+          <li class="login_guest_container" style="opacity: 1;">
+          </li>
+        <input id="home_realm_discovery" type="hidden" value="0"></ul>
+      </div>
+      <div class="push"></div>
+    </div>
+    <div id="footer_links_container" class="login_footer_container sticky_footer">
+      <div class="footer_inner_container">
+      <table id="footer_table">
+        <tbody><tr>
+          <td>
+            <div class="footer_glyph">
+              <!--img src="images/blueair.png" class="footer_glyph" alt="ภาพประกอบสำหรับ Azure Active Directory"-->
+            </div>
+          </td>
+          <td>
+            <div class="footer tinytext">
+              <span class="corporate_footer">
+                <span class="branding_footer">บัญชีผู้ใช้ของคุณสามารถใช้ได้ทุกแห่งที่มีไอคอนนี้</span>
+                                <span class="corp_link" id="footer_copyright_link">© © 2014 BlueAir Hotspot</span>
+                   
+              <span class="corp_link"><a tabindex="40" id="footer_link_0" class="footer_link_legal" href="#">ข้อมูลด้านกฎหมาย</a></span><span class="corp_link"><a tabindex="41" id="footer_link_1" class="footer_link_privacy" href="#">ความเป็นส่วนตัว</a></span><span class="corp_link"><a tabindex="42" id="footer_link_2" class="footer_link_feedback" href="#">คำติชม</a></span></span>
+            </div>
+          </td>
+        </tr>
+      </tbody></table>
+      </div>
+    </div>
+    <div id="login_prefetch_container" class="no_display" aria-hidden="true"></div>
+        </td>
+        <td id="login_panel_right">
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+    <script type="text/javascript">
+  Constants.DEFAULT_FOOTER_LINKS = {
+  'legal': {
+  'label': 'ข้อมูลด้านกฎหมาย',
+  'url': "http://login.microsoftonline.com/gls.srf?urlID=Legal&mkt=TH-TH&vv=2020"
+  },
+  'privacy': {
+  'label': 'ความเป็นส่วนตัว',
+  'url': "http://login.microsoftonline.com/gls.srf?urlID=WinLivePrivacyStatement&mkt=TH-TH&vv=2020"
+  },
+  'terms': {
+  'label': 'ข้อกำหนด',
+  'url': "http://login.microsoftonline.com/gls.srf?urlID=WinLiveTermsOfUse&mkt=TH-TH&vv=2020"
+  },
+  'helpcentral': {
+  'label': 'วิธีใช้',
+  'url': "http://login.microsoftonline.com/gls.srf?urlID=WLHelpCentral&mkt=TH-TH&vv=2020"
+  },
+  'feedback': {
+  'label': 'คำติชม',
+  'url': "http://login.microsoftonline.com/gls.srf?urlID=WLFeedback&mkt=TH-TH&vv=2020"
+  },
+  'privacyandcookies': {
+  'label': 'ความเป็นส่วนตัว',
+  'url': "http://login.microsoftonline.com/gls.srf?urlID=WinLivePrivacyStatement&mkt=TH-TH&vv=2020"
+  },
+  'helpfor2fa': {
+  'label': 'วิธีใช้',
+  'url': 'http://g.microsoftonline.com/0AX00{{StrongAuth.Language}}/670'
+  }
+  };
+</script>
+<script type="text/javascript">
+<!--
+  document.login.username.focus();
+//-->
+</script>
+</body></html>

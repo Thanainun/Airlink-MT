@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+$(if refresh-timeout)
+<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+$(endif)
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<title><center>DUYDUI Server Hotspot Internet WiFi</center></title>
+	
+    <style type="text/css" media="all">
+		@import url("css/style.css");
+		@import url("css/jquery.wysiwyg.css");
+		@import url("css/facebox.css");
+		@import url("css/visualize.css");
+		@import url("css/date_input.css");
+    </style>
+	
+	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=7" /><![endif]-->
+	<!--[if lt IE 8]><style type="text/css" media="all">@import url("css/ie.css");</style><![endif]-->
+
+	<!--[if IE]><script type="text/javascript" src="js/excanvas.js"></script><![endif]-->
+	
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.img.preload.js"></script>
+	<script type="text/javascript" src="js/jquery.filestyle.mini.js"></script>
+	<script type="text/javascript" src="js/jquery.wysiwyg.js"></script>
+	<script type="text/javascript" src="js/jquery.date_input.pack.js"></script>
+
+	<script type="text/javascript" src="js/facebox.js"></script>
+	<script type="text/javascript" src="js/jquery.visualize.js"></script>
+	<script type="text/javascript" src="js/jquery.select_skin.js"></script>
+	<script type="text/javascript" src="js/ajaxupload.js"></script>
+	<script type="text/javascript" src="js/jquery.pngfix.js"></script>
+	<script type="text/javascript" src="js/custom.js"></script>
+<script language="JavaScript">
+<!--
+$(if advert-pending == 'yes')
+    var popup = '';
+    function focusAdvert() {
+	if (window.focus) popup.focus();
+    }
+    function openAdvert() {
+	popup = open('$(link-advert)', 'hotspot_advert', '');
+	setTimeout("focusAdvert()", 1000);
+    }
+$(endif)
+    function openLogout() {
+	if (window.name != 'hotspot_status') return true;
+        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=480,height=383');
+	window.close();
+	return false;
+    }
+//-->
+</script>
+</head>
+
+
+
+
+
+<body bottommargin="0" topmargin="0" leftmargin="0" rightmargin="0"
+$(if advert-pending == 'yes')
+	onLoad="openAdvert()"
+$(endif)
+>
+	
+	<div id="hld">
+	
+						
+			
+			<div class="block small center login">
+			
+				<div class="block_head">
+					<div class="bheadl"></div>
+
+					<div class="bheadr"></div>
+					
+					<center style="font-size: 16px; font-weight: bold; text-align: center; color: #3AA3E6;">
+					<center>  <span style="color: #FF5700">DUYDUI Server WiFi Hotspot </span></center>
+				</div>		<!-- .block_head ends -->
+				
+				
+				
+				<div class="block_content">
+
+		$(if login-by == 'trial')
+	<div style="text-align: center;"><a href="#">Welcome Trial User!</a></div>
+$(elif login-by != 'mac')
+	<div style="text-align: center;"><font size="4"><a href="#">ยินดีต้อนรับคุณ </a> <font color="red">$(username)</font><a href="#"> เข้าสู่ระบบค่ะ</a></font></div>
+$(endif)
+					
+					
+	<form action="$(link-logout)" name="logout" onSubmit="return openLogout()">				
+			<table cellpadding="0" cellspacing="0" width="100%">
+						
+							<tr>
+								<th width="170">ข้อมูลเครื่องของท่าน</th>
+								<th>รายละเอียดการใช้งานทั้งหมดของท่าน</th>							
+							</tr>
+							
+							<tr>					
+								<td><a href="#">ไอพีแอดเดรส :</a></td>
+								<td><font color="red">$(ip)</font></td>	
+							</tr>
+							
+							<tr>					
+								<td><a href="#">แม็คแอดเดรส :</a></td>
+								<td><font color="red">$(mac)</font></td>
+							</tr>
+							
+							<tr>							
+								<td><a href="#">อัพโหลด/ดาว์โหลด :</a></td>
+								<td><font color="red">$(bytes-in-nice) / $(bytes-out-nice)</font></td>							
+							</tr>
+							$(if session-time-left)
+							<tr>						
+								<td><a href="#">ใช้งานมาแล้ว :</a></td>
+								<td><font color="red">$(uptime)</font><br><a href="#">d=วัน &#9679; h=ชั่วโมง  &#9679; m=นาที &#9679; s=วินาที</font></td>			
+							</tr>
+							<tr>						
+								<td><a href="#">หมดอายุในอีก :</a></td>
+								<td><font color="red">$(session-time-left)</font><br><a href="#">d=วัน &#9679; h=ชั่วโมง  &#9679; m=นาที &#9679; s=วินาที</font></td>			
+							</tr>
+							$(else)
+							<tr>		
+								<td><a href="#">เวลาที่ใช้งานมาแล้ว :</a></td>
+								<td><font color="red">$(uptime)</font></td>
+							</tr>
+						$(endif)
+						$(if blocked == 'yes')
+							<tr>		
+								<td><a href="#">สถานะ :</a></td>
+								<td><font color="red"><a href="$(link-advert)" target="hotspot_advert">advertisement</a> required</font></td>
+							</tr>
+							$(elif refresh-timeout)
+							<tr>		
+								<td><a href="#">ตรวจสอบสถานะทุกๆ :</a></td>
+								<td><font color="red">$(refresh-timeout) นาที</font></td>
+							</tr>
+							$(endif)
+						</table>
+			<p>$(if login-by-mac != 'yes') </p>
+			<table width="400" border="0" align="center" id="footer" name="nav">
+			  <tr align="center" valign="top">
+			    <td height="66"><a href="https://www.google.co.th/"><img src="images/Logo/google.png" width="111" height="40"  alt=""/></a></td>
+			    <td><a href="https://www.youtube.com/"><img src="images/Logo/youtube.png" width="111" height="40"  alt=""/></a></td>
+			    <td><a href="https://www.facebook.com/"><img src="images/Logo/facebook.png" width="111" height="40"  alt=""/></a></td>
+		      </tr>
+	    </table>
+		<center> 
+	    <p><input type="submit" class="submit small" value="ออกจากระบบ" > </p> </center>
+			$(endif)
+
+					</form>
+				
+				</div>		
+				<div class="bendl"></div>
+
+				<div class="bendr"></div>
+				
+			</div>		
+			
+			
+			
+			
+		
+				
+			</div>
+		
+		
+		</div>						
+		
+	</div>		
+	
+</body>
+</html>

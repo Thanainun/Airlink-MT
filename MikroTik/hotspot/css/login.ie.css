@@ -1,0 +1,64 @@
+.inner_container {
+  padding-top: 45px;
+}
+.login_workload_logo_container {
+  margin-bottom: 30px;
+}
+.login_cred_container {
+  margin-bottom: 20px;
+}
+.login_guest_container {
+  padding-top: 20px;
+}
+input.login_textfield {
+  line-height: 30px;
+}
+.login_inner_container {
+  margin-top: -11px;
+}
+
+@media only screen and (max-width: 600px), (max-device-width: 600px) 
+{
+  .login_inner_container {
+    margin-top: -30px;
+  }
+}
+
+@media only screen and (max-height: 680px), (max-device-height: 680px) {
+  .inner_container {
+    padding-top: 30px;
+  }
+  .login_workload_logo_container {
+    margin-bottom: 0px;
+  }
+  .login_cred_container {
+    margin-bottom: 20px;
+  }
+  .login_guest_container {
+    padding-top: 10px;
+    margin-bottom: 20px;
+  }
+  .cred {
+    padding-bottom: 0em;
+  }
+}
+
+
+@media only screen and (max-height: 550px), (max-device-height: 550px) {
+  .inner_container {
+    padding-top: 30px;
+  }
+  .login_workload_logo_container {
+    margin-bottom: 0px;
+  }
+  .login_cred_container {
+    margin-bottom: 20px;
+  }
+  .login_guest_container {
+    padding-top: 10px;
+    margin-bottom: 20px;
+  }
+  .cred {
+    padding-bottom: 0em;
+  }
+}

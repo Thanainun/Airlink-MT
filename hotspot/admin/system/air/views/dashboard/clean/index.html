@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+function countDown(secs) {
+	var btn = document.getElementById('btn');
+	btn.value = "กรุณารอ "+secs+" วินาที";
+	if(secs < 1) {
+		clearTimeout(timer);
+		btn.disabled = false;
+		btn.value = 'กลับหน้าหลัก';
+	}
+	secs--;
+	var timer = setTimeout('countDown('+secs+')',1000);
+}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+<div align="center">
+  <p>ระบบยังไม่ลองนะครับ ถ้าเกิดครัยลองเติมเงินไม่เข้าติดต่อ ร้านค้าใกล้บ้าน นะครับ</p>
+  <form name="form1" method="post" action="topups">
+    <input disabled type="submit" id="btn" value="กรุณารอ 10 วินาที"  style="font-size:20px; padding:10px; width:200px;">
+    </form>
+  <p>&nbsp;</p>
+</div>
+<script type="text/javascript">countDown(10);</script>
+</body>
+</html>

@@ -1,0 +1,795 @@
+/* ================= MISC === */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.btn-notify {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background: #e85c41;
+  border: 0;
+  border-bottom: 3px solid #e85c41;
+  border-top: 3px solid #e85c41;
+  padding: 11px 28px;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: border 0.2s, padding 0.2s;
+  -moz-transition: border 0.2s, padding 0.2s;
+  -o-transition: border 0.2s, padding 0.2s;
+  transition: border 0.2s, padding 0.2s;
+}
+@media (max-width: 620px) {
+  .btn-notify {
+    width: 100%;
+  }
+}
+.btn-notify:active {
+  background: #e85c41;
+  color: #fff;
+  border-top: 3px solid #c74f38;
+  border-bottom: 3px solid #e85c41 !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.btn-notify:hover {
+  background: #e85c41;
+  color: #fff;
+  border-bottom: 3px solid #c74f38;
+}
+
+a {
+  -webkit-transition: color 0.2s;
+  -moz-transition: color 0.2s;
+  -o-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+.modal {
+  width: 460px;
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -230px;
+  z-index: 1000;
+  -webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  border: 0;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 40px 0 70px 0;
+  text-align: center;
+  height: 228px;
+  margin-top: -114px;
+}
+.modal h1 {
+  margin: 0 0 30px 0;
+  color: #333333;
+}
+.modal p {
+  margin-bottom: 8px;
+  line-height: 16px;
+}
+.modal p.modal-close {
+  color: #b2b2b2;
+  cursor: pointer;
+}
+.modal p.modal-close:hover {
+  color: #333;
+}
+
+.modal-overlay {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+/* ================= TYPOGRAPHY === */
+h1 {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin: 15px 0 0 0;
+  line-height: 36px;
+}
+@media (max-width: 620px) {
+  h1 {
+    line-height: 40px;
+    margin-top: 135px;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 25px;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #a2a2a2;
+  margin-bottom: 40px;
+}
+@media (max-width: 620px) {
+  h2 {
+    padding: 0 20px;
+    line-height: 30px; 
+  }
+}
+
+p {
+  line-height: 25px;
+}
+
+/* ================= HEADER === */
+header {
+  background: #52bad5;
+  height: 65px;
+  position: relative;
+  margin-bottom: 20px;
+}
+@media (max-width: 620px) {
+  header {
+    height: 830px;
+  }
+}
+header .container {
+  position: relative;
+  height: 100%;
+}
+header div {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+header.lights-out #astromanEyes {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+header.lights-out #rocketEyes {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+header.lights-out #stars {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+header.lights-out #lightSwitch, header.lights-out #lightSwitchDummy {
+  background-position: top left;
+}
+
+#astroman {
+  width: 125px;
+  height: 116px;
+  background: url(../img/astroman.png) no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  font-size: 24px;
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 0 0 56px;
+  position: absolute;
+  left: 417px;
+  bottom: 35px;
+  z-index: 3;
+}
+@media (min-width: 621px) and (max-width: 960px) {
+  #astroman {
+    left: 277px;
+  }
+}
+@media (max-width: 620px) {
+  #astroman {
+    left: 167px;
+  }
+}
+
+#astromanEyes {
+  background: url(../img/astromanEyes.png) no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 34px;
+  height: 15px;
+  position: absolute;
+  top: 538px;
+  left: 429px;
+  z-index: 4;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+@media (min-width: 621px) and (max-width: 960px) {
+  #astromanEyes {
+    left: 289px;
+  }
+}
+@media (max-width: 620px) {
+  #astromanEyes {
+    top: 728px;
+    left: 179px;
+  }
+}
+
+#bookAlpha {
+  font-family: 'Source Sans Pro', sans-serif;
+  width: 170px;
+  height: 50px;
+  background: url(../img/bookAlpha.png) no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  font-size: 9px;
+  color: #81d0e4;
+  font-weight: 400;
+  padding: 15px 0 0 0px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+  position: absolute;
+  bottom: 95px;
+  right: 329px;
+  z-index: 2;
+}
+@media (min-width: 621px) and (max-width: 960px) {
+  #bookAlpha {
+    right: 210px;
+  }
+}
+
+#bookBeta {
+  font-family: 'Source Sans Pro', sans-serif;
+  width: 170px;
+  height: 30px;
+  background: url(../img/bookBeta.png) no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  font-size: 9px;
+  color: #52bad5;
+  font-weight: 700;
+  padding: 5px 0 0 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  -webkit-transform: rotate(255deg);
+  -moz-transform: rotate(255deg);
+  -ms-transform: rotate(255deg);
+  -o-transform: rotate(255deg);
+  transform: rotate(255deg);
+  position: absolute;
+  bottom: 105px;
+  right: 268px;
+  z-index: 2;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+@media (min-width: 621px) and (max-width: 960px) {
+  #bookBeta {
+    right: 149px;
+  }
+}
+
+#bookGamma {
+  font-family: 'Source Sans Pro', sans-serif;
+  width: 200px;
+  height: 40px;
+  background: url(../img/bookGamma.png) no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  font-size: 9px;
+  color: #8396aa;
+  font-weight: bold;
+  padding: 10px 55px 0 0px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 35px;
+  right: 110px;
+  z-index: 2;
+}
+@media (min-width: 621px) and (max-width: 960px) {
+  #bookGamma {
+    right: 20px;
+  }
+}
+
+#calendar {
+  width: 140px;
+  height: 166px;
+  background: url(../img/calendar.png) no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  font-size: 36px;
+  color: #e85c41;
+  font-weight: bold;
+  padding: 95px 0 0 0px;
+  position: absolute;
+  left: 400px;
+  bottom: 234px;
+}
+@media (min-width: 621px) and (max-width: 960px) {
+  #calendar {
+    left: 240px;
+  }
+}
+@media (max-width: 620px) {
+  #calendar {
+    left: 80px;
+    bottom: 374px;
+  }
+}
+
+#clock {
+  width: 250px;
+  height: 70px;
+  background: url(../img/clock.png) no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  font-size: 36px;
+  color: #e85c41;
+  font-weight: bold;
+  padding: 26px 0 0 27px;
+  position: absolute;
+  left: 155px;
+  bottom: 35px;
+}
+@media (min-width: 621px) and (max-width: 960px) {
+  #clock {
+    left: 15px;
+  }
+}
+@media (max-width: 620px) {
+  #clock {
+    left: 25px;
+  }
+}
+#clock span {
+  float: left;
+  margin-right: 1px;
+  letter-spacing: 0.06em;
+  z-index: 4;
+}
+#clock #hours {
+  position: absolute;
+  top: 26px;
+  left: 27px;
+}
+#clock #separator {
+  position: absolute;
+  top: 24px;
+  left: 72px;
+}
+#clock #minutes {
+  position: absolute;
+  top: 26px;
+  left: 88px;
+}
+
+#lightSwitch, #lightSwitchDummy {
+  width: 41px;
+  height: 53px;
+  background: url(../img/lightSwitch.png) no-repeat bottom left;
+  -webkit-background-size: 41px 106px;
+  -moz-background-size: 41px 106px;
+  -o-background-size: 41px 106px;
+  background-size: 41px 106px;
+  cursor: pointer;
+  position: absolute;
+  right: 4px;
+  bottom: 18px;
+}
+@media (min-width: 621px) and (max-width: 960px) {
+  #lightSwitch, #lightSwitchDummy {
+    right: 5px;
+    bottom: 100px;
+  }
+}
+@media (max-width: 620px) {
+  #lightSwitch, #lightSwitchDummy {
+    right: 243px;
+    bottom: 128px;
+  }
+}
+
+#lightSwitchDummy {
+  background: none;
+  z-index: 4;
+}
+
+#overlay {
+  background: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 3;
+}
+
+#rocket {
+  width: 126px;
+  height: 230px;
+  background: url(../img/rocket.png) no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  position: absolute;
+  bottom: 75px;
+  right: 157px;
+  z-index: 2;
+}
+@media (min-width: 621px) and (max-width: 960px) {
+  #rocket {
+    right: 67px;
+  }
+}
+@media (max-width: 620px) {
+  #rocket {
+    right: 87px;
+    bottom: 105px;
+  }
+}
+
+#rocketEyes {
+  background: url(../img/rocketEyes.png) no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 20px;
+  height: 9px;
+  position: absolute;
+  top: 381px;
+  left: 710px;
+  z-index: 4;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+@media (min-width: 621px) and (max-width: 960px) {
+  #rocketEyes {
+    left: 480px;
+  }
+}
+@media (max-width: 620px) {
+  #rocketEyes {
+    top: 541px;
+    left: 140px;
+  }
+}
+
+#stars {
+  background: url(../img/stars.png) no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 200px;
+  height: 147px;
+  position: absolute;
+  top: 343px;
+  right: 119px;
+  z-index: 4;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+@media (min-width: 621px) and (max-width: 960px) {
+  #stars {
+    right: 33px;
+  }
+}
+@media (max-width: 620px) {
+  #stars {
+    top: 473px;
+    right: 54px;
+  }
+}
+
+#table {
+  width: 800px;
+  height: 30px;
+  position: relative;
+  background: url(../img/table.png) no-repeat;
+  -webkit-background-size: 800px 30px;
+  -moz-background-size: 800px 30px;
+  -o-background-size: 800px 30px;
+  background-size: 800px 30px;
+  position: absolute;
+  bottom: 5px;
+  left: 70px;
+  border-radius: 2px;
+}
+@media (min-width: 621px) and (max-width: 960px) {
+  #table {
+    width: 620px;
+    left: 0;
+  }
+}
+@media (max-width: 620px) {
+  #table {
+    width: 300px;
+    left: 0;
+  }
+}
+#table:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  margin-left: -47.5%;
+  background: #5e4424;
+  height: 5px;
+  width: 95%;
+}
+
+/* ================= SUBSCRIBE === */
+#subscribe {
+  padding: 165px 0 200px 0;
+}
+#subscribe form {
+  margin: 0 0 40px 0;
+}
+#subscribe .email {
+  width: 478px;
+  height: 48px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border: 2px solid #ebebeb;
+  background: #ebebeb;
+  font-size: 16px;
+  padding-left: 15px;
+  border-radius: 0;
+  margin: 0 10px 0 0;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+#subscribe .email.placeholder {
+  color: #808080;
+}
+#subscribe .email:-moz-placeholder {
+  color: #808080;
+}
+#subscribe .email::-moz-placeholder {
+  color: #808080;
+}
+#subscribe .email:-ms-input-placeholder {
+  color: #808080;
+}
+#subscribe .email::-webkit-input-placeholder {
+  color: #808080;
+}
+#subscribe .email:focus {
+  border-color: #bcbcbc;
+  color: #2e2e2e;
+}
+#subscribe .email.error {
+  border-color: #e85c41;
+}
+@media (max-width: 620px) {
+  #subscribe .email {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+#subscribe p {
+  color: #a2a2a2;
+  font-size: 12px;
+  margin: 0;
+  line-height: 12px;
+}
+#subscribe p i {
+  color: #e85c41;
+}
+
+/* ================= CONTACT === */
+#contact {
+  background: #35495d;
+  position: relative;
+  padding: 0 0 200px 0;
+}
+#contact h2 {
+  color: #29bb9c;
+  margin: 120px 0 40px 0;
+}
+#contact .btn-notify {
+  background: #29bb9c;
+  border-bottom: 3px solid #29bb9c;
+  border-top: 3px solid #29bb9c;
+}
+#contact .btn-notify:active {
+  border-top-color: #23a186;
+  border-bottom-color: #29bb9c !important;
+}
+#contact .btn-notify:hover {
+  border-bottom-color: #23a186;
+}
+#contact form {
+  margin: 60px 0 0 0;
+}
+#contact form input {
+  width: 298px;
+  height: 50px;
+}
+#contact form textarea {
+  height: 150px;
+  width: 100%;
+  max-width: 100%;
+}
+#contact form input, #contact form textarea {
+  border-radius: 0;
+  background: #ebebeb;
+  border: 2px solid #ebebeb;
+  padding: 15px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin-bottom: 20px;
+  color: #2e2e2e;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+#contact form input.placeholder, #contact form textarea.placeholder {
+  color: #808080;
+}
+#contact form input:-moz-placeholder, #contact form textarea:-moz-placeholder {
+  color: #808080;
+}
+#contact form input::-moz-placeholder, #contact form textarea::-moz-placeholder {
+  color: #808080;
+}
+#contact form input:-ms-input-placeholder, #contact form textarea:-ms-input-placeholder {
+  color: #808080;
+}
+#contact form input::-webkit-input-placeholder, #contact form textarea::-webkit-input-placeholder {
+  color: #808080;
+}
+#contact form input:focus, #contact form textarea:focus {
+  border-color: #a2a2a2;
+  color: #2e2e2e;
+}
+#contact form input.error, #contact form textarea.error {
+  border-color: #e85c41;
+}
+#contact form .text {
+  margin-right: 20px;
+}
+@media (max-width: 620px) {
+  #contact form .text {
+    margin-right: 0;
+  }
+}
+#contact:before {
+  content: "";
+  top: -4px;
+  height: 4px;
+  left: 0;
+  width: 100%;
+  background: url(../img/stripes.gif);
+  -webkit-background-size: 80px 4px;
+  -moz-background-size: 80px 4px;
+  -o-background-size: 80px 4px;
+  background-size: 80px 4px;
+  display: block;
+}
+#contact p {
+  color: #d8e1eb;
+}
+
+/* ================= SOCIAL === */
+#social {
+  background: #29bb9c;
+  padding: 60px 0 80px 0;
+}
+#social a {
+  color: #209179;
+  border: 2px solid #209179;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  font-size: 18px;
+  display: inline-block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 9px 0 0 0;
+  margin: 0 15px;
+  -webkit-transition: color 0.2s, border-color 0.2s;
+  -moz-transition: color 0.2s, border-color 0.2s;
+  -o-transition: color 0.2s, border-color 0.2s;
+  transition: color 0.2s, border-color 0.2s;
+}
+@media (max-width: 620px) {
+  #social a {
+    margin: 0 10px 20px 10px;
+  }
+}
+#social a:hover {
+  color: #fefefe;
+  border-color: #fefefe;
+  text-decoration: none;
+}
+
+/* ================= FOOTER === */
+footer {
+  padding: 55px 0 100px 0;
+}
+footer p {
+  font-size: 12px;
+  color: #a2a2a2;
+}
+footer .rocket {
+  color: #a2a2a2;
+  font-size: 18px;
+}
+footer .rocket:hover {
+  color: #52bad5;
+  text-decoration: none;
+}
+
+/* ================= TABLET === */
+@media (min-width: 621px) and (max-width: 960px) {
+  .container {
+    width: 620px;
+  }
+
+  .span8.offset2 {
+    margin-left: 0;
+  }
+}
+@media (max-width: 620px) {
+  .container {
+    width: 300px;
+  }
+
+  .span8.offset2 {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  #bookAlpha, #bookBeta,
+  #bookGamma {
+    display: none;
+  }
+}

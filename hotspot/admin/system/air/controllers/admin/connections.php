@@ -1,0 +1,79 @@
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Firewall/Connections
+ *
+ * Firewall/Connections Controller
+ *
+ * @package		Firewall/Connections
+ * @author		Sarto Nice
+ * @version		1.0
+ * @based on	Nost radius management
+ * @license		GPL/GNU License Copyright (c) 2008 Nost Computer
+ */
+
+class Connections extends MY_Admin
+{
+
+	function __construct()
+	{
+		parent::__construct();
+		
+	}
+
+	function index()
+	{
+	
+		$this->template	->add_css('datatable/table_jui.css?'._DATETIME)
+						->add_js('datatable/jquery.dataTables.min.js?'._DATETIME)
+						->add_js('datatable/connections.js?'._DATETIME)
+						//->write_view('left-content', 'admin/connections/connections_view',$data)
+						->write_view('left-content', 'admin/connections/connections_view','')
+						->render();
+	}
+
+	function json()
+	{
+		
+		$firewall = $this->mikrotik_api->ip()->firewall()->get_all_firewall_connection();
+		$output = array("aaData" => array());
+		$count = 1;
+		
+		foreach ($firewall as $connection)
+		{
+			//$regtable = $m;
+			$regtable = '';
+			$jdata = array();
+		 
+			$jdata[] .= $count++;
+			$jdata[] .= isset($connection['src-address']) ? $connection['src-address'] : '';
+			$jdata[] .= isset($connection['dst-address']) ? $connection['dst-address'] : '';
+			$jdata[] .= isset($connection['protocol']) ? $connection['protocol'] : ''; 
+			$jdata[] .= isset($connection['connection-type']) ? $connection['connection-type'] : '';
+			$jdata[] .= isset($connection['connection-mark']) ? $connection['connection-mark'] : '';
+			$jdata[] .= isset($connection['p2p']) ? $connection['p2p'] : '';
+			$jdata[] .= isset($connection['timeout']) ? $connection['timeout'] : '';
+			$jdata[] .= isset($connection['tcp-state']) ? $connection['tcp-state'] : '';
+
+			$output['aaData'][] = $jdata;
+
+		}
+
+		$this->output->enable_profiler(FALSE);
+		
+
+		print json_encode($output);
+
+	}
+	
+	function help()
+	{
+		$data['head'] = "วิธีการใช้งาน";
+		$data['content'] = "<p>Dhcp list</p>";
+		
+		$this->output->enable_profiler(FALSE);
+		$this->load->view('admin/help', $data);
+	}
+
+}
+/* End of file connections.php */
+/* Location: ./system/nostradius/controllers/admin/connections.php */

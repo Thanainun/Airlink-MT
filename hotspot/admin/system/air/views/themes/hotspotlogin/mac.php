@@ -1,0 +1,1 @@
+<?php $this->load->file(set_realpath('').'templates/hotspotlogin/'.$this->config->item('template').'/mac_deny.php'); ?>

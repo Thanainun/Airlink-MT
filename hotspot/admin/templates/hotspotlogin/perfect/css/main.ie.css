@@ -1,0 +1,20 @@
+#bottom,
+#progress-bar > .bar {
+	background: transparent;
+	
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);
+	
+	zoom: 1;
+}
+
+#progress-bar > .ind {
+	margin-top: 0;
+	margin-left: -32px;
+	background: transparent;
+	
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000,endColorstr=#B2000000);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000,endColorstr=#B2000000);
+	
+	zoom: 1;
+}

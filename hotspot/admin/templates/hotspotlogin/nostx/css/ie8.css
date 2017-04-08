@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+/* Main Features */
+#main-features {
+	padding-top:10px;
+	margin-top:10px;
+}
+#main-features>ul>li {
+	margin-right:10px;
+}
+#main-features>ul>li a {
+	background:none;
+}
+#main-features>ul>li a:hover {
+	width:140px;
+	height:140px;
+	margin:0 auto 10px;
+}
+.main-features-1, .main-features-2, .main-features-3 {
+	background-color: none !important;
+	background-image:url(../img/feature-bg.png) !important;
+}
+
+/* Section 3 */
+#section-3 {
+	background: #2b241c !important;
+}

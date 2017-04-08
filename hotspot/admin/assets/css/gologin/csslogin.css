@@ -1,0 +1,21 @@
+.hide() {
+	display: none;
+}
+
+div#error_msg {
+	display: none;
+	position: absolute;
+	left: 2px;
+	bottom: 2px;
+}
+
+form#user_login {
+	display: none;
+}
+
+div#popup_size {
+	display: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}

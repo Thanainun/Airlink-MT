@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* For IE9 or lower */
+
+/* Hide */
+.bg-2, .bg-3, .bg-4 {
+	display: none;
+}
+.grass-2, .meteor-2, .meteor-1, .bird-wing, .bird-2 {
+	display: none !important;
+}
+
+/* Object */
+.bird {
+	background:url(../img/bird-body.png) center no-repeat !important;
+	top:60%;
+	left:4%;
+}
+
+.leaf-2 {
+	right:10%;
+	top:40%;
+	z-index:99;
+}
+
+.leaf-3 {
+	right:70%;
+	top:5%;
+}
+
+
+

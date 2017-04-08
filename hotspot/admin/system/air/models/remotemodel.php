@@ -1,0 +1,216 @@
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<?php
+
+Class Remotemodel extends CI_Model {
+	function __construct()
+	{
+		parent::__construct();
+		
+		//table name
+		$this->_table='accesspoint';
+		$this->_table_nas='nas';
+		
+		$this->load->model('jsonmodel');
+		
+		// Ajax
+		$this->sTable = "nas ns left join accesspoint ap on ap.name=ns.shortname";
+		$this->aColumns = array('ap.id', 'ap.name', 'ns.type', 'ap.calledstationid','ap.ipaddr','ap.date','ap.location');
+
+	
+	}
+		
+	
+	function getAccesspoint($fields = null, $where = null, $limit = null, $order = null)
+	{
+		
+		($fields != null) ? $this->db->select($fields) :'';
+		
+		($where != null) ? $this->db->where($where) :'';
+		
+		$this->db->join($this->_table_nas,$this->_table.'.name = '.$this->_table_nas.'.shortname','left');
+		
+		($limit != null) ? $this->db->limit($limit['start'],$limit['end']) :'';
+
+		($order != null) ? $this->db->order_by($this->_table.'.'.$order['field'],$order['dir']) : $this->db->order_by($this->_table.'.id','asc');
+		
+		return $this->db->get($this->_table);
+	}
+	
+	function upDateip($ip,$name)
+	{
+	
+		$this->db->where('name',$name);
+		$this->db->update($this->_table,array('ipaddr'=>$ip,'date'=>date("YmdHis")));
+	}
+
+	function ping($ip)
+	{ $connesso="ap_online.png";
+	$churl = @fsockopen($ip,80, $errno, $errstr, 1);
+	if (!$churl){$connesso="ap_offline.png";}
+	
+		return $connesso;
+	}
+	function jsonQuery()
+	{
+
+		$jdata = $this->jsonmodel->data_table($this->sTable, $this->aColumns);
+				
+		$output = $jdata['output'];
+	   
+
+		foreach ($jdata['rResult']->result() as $aRow)
+		{ 	
+		
+		$ap_s = $this->remotemodel->ping($aRow->ipaddr); 
+		
+			$row = array();
+			
+			$row[] = $aRow->name;
+			$row[] = $aRow->type;
+			$row[] = $aRow->calledstationid;
+			$row[] = $aRow->date;
+			$row[] = $aRow->location. ' ' .$aRow->aumpur. ' '.$aRow->province;
+			$row[] = anchor('http://'.$aRow->ipaddr.'/','<img width="30" height="25" src='.other_asset_url($ap_s,'','images').'>','target="_blank" id="iframe_fancybox" class="connect_ap"');
+			$row[] = anchor('admin/accesspoint/apform/edit/'.$aRow->name,'<img width="16" height="16" src='.other_asset_url('edit.png','','images').'>','class="apedit" id="edit"').' '.
+			(($aRow->type=='server') ? '' : anchor('admin/accesspoint/del/'.$aRow->name,'<img width="16" height="16" src='.other_asset_url('delete.gif','','images').'>','id="item_delete"'));
+
+			$output['aaData'][] = $row;
+		}
+
+		return json_encode( $output );
+
+	}
+	
+	function addAp($post_data)
+	{
+
+		$rep = array();
+
+		if( ! $this->remotemodel->ApExist($post_data['name'],$post_data['calledstationid']))
+		{
+
+				//We want everything O.K
+				$this->db->trans_start();
+
+				$ap_data = array(
+								'name'		=>	$post_data['name'],
+								'date'=>date("YmdHis"),
+								'ipaddr'	=>	$post_data['ipaddr'],
+								'calledstationid'	=>	$post_data['calledstationid'],
+								'date'		=>	'',
+								'location'	=>	$post_data['location'],
+								'address'	=>	$post_data['address'],
+								'tambon'	=>	$post_data['tambon'],
+								'aumpur'	=>	$post_data['aumpur'],
+								'province'	=>	$post_data['province'],
+								'login_page'	=>	$post_data['login_page'],
+								'popup_page'	=>	$post_data['popup_page'],
+								'announced_page'	=>	$post_data['announced_page'],
+								'help'	=>	$post_data['help'],
+								'register'	=>	$post_data['register']
+								);
+
+				$this->db->insert($this->_table,$ap_data);
+
+				$nas_data = array(
+								'nasname'	=>	$post_data['nasname'],
+								'shortname'	=>	$post_data['name'],
+								'type'		=>	$post_data['type'],
+								'ports'		=>	$post_data['ports'],
+								'secret'	=>	$post_data['secret']
+								);
+
+				$this->db->insert($this->_table_nas,$nas_data);
+
+				//OK stops here
+				$this->db->trans_complete();
+
+				$rep['rep'] = true;
+				$rep['msg'] = $this->lang->line('accesspoint_msg_add_success');
+
+		}
+		else
+		{
+			$rep['rep'] = false;
+			$rep['msg'] = $this->lang->line('accesspoint_msg_add_exist');
+		}
+
+		return $rep;
+
+	}
+
+	function edit($post_data)
+	{
+
+		//We want everything O.K
+		$this->db->trans_start();
+
+		//accesspoint
+		$ap_data = array(
+						'name'		=>	$post_data['name'],
+						'ipaddr'	=>	$post_data['ipaddr'],
+						'date'=>date("YmdHis"),
+						'calledstationid'	=>	$post_data['calledstationid'],
+						'location'	=>	$post_data['location'],
+						'address'	=>	$post_data['address'],
+						'tambon'	=>	$post_data['tambon'],
+						'aumpur'	=>	$post_data['aumpur'],
+						'province'	=>	$post_data['province'],
+						'login_page'	=>	$post_data['login_page'],
+						'popup_page'	=>	$post_data['popup_page'],
+						'announced_page'	=>	$post_data['announced_page'],
+						'help'	=>	$post_data['help'],
+						'register'	=>	$post_data['register'],
+					);
+		$this->db->where('name',$post_data['name']);
+		$this->db->update($this->_table,$ap_data);
+
+		$nas_data = array(
+						'nasname'	=>	$post_data['nasname'],
+						'shortname'	=>	$post_data['name'],
+						'type'		=>	$post_data['type'],
+						'ports'		=>	$post_data['ports'],
+						'secret'	=>	$post_data['secret']
+					);
+		$this->db->where('shortname',$post_data['name']);
+		$this->db->update($this->_table_nas,$nas_data);
+
+		//OK stops here
+		$this->db->trans_complete();
+
+		$rep['rep'] = true;
+		$rep['msg'] = $this->lang->line('accesspoint_msg_edit_success').$post_data['name'];
+
+		return $rep;
+
+	}
+
+	function deleteAp($name)
+	{
+
+		$dirname = set_realpath('gologin/'.$name, FALSE);
+		delete_files($dirname, TRUE, 1);
+		
+		//Accesspoint table
+		$this->db->where('name',$name);
+		$this->db->delete($this->_table);
+		
+		$this->db->where('shortname',$name);
+		$this->db->delete($this->_table_nas);
+
+		return array('rep'=>true,'msg'=>sprintf($this->lang->line('accesspoint_msg_del_success'),$name));
+	
+	}
+	
+	function ApExist($name,$mac)
+	{
+		$query=$this->remotemodel->getAccesspoint(null,array($this->_table.'.name'=>$name));
+		$query2=$this->remotemodel->getAccesspoint(null,array($this->_table.'.calledstationid'=>$mac));
+		
+		if($query->num_rows > 0 || $query2->num_rows > 0)
+			return true;
+		else 
+			return false;
+	}
+	
+}

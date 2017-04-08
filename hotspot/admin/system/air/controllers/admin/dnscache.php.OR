@@ -1,0 +1,73 @@
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Firewall/Connections
+ *
+ * Firewall/Connections Controller
+ *
+ * @package		Firewall/Connections
+ * @author		Sarto Nice
+ * @version		1.0
+ * @based on	Nost radius management
+ * @license		GPL/GNU License Copyright (c) 2008 Nost Computer
+ */
+
+class Dnscache extends MY_Admin
+{
+
+	function __construct()
+	{
+		parent::__construct();
+		
+	}
+
+	function index()
+	{
+	
+		$this->template	->add_css('datatable/table_jui.css?'._DATETIME)
+						->add_js('datatable/jquery.dataTables.min.js?'._DATETIME)
+						->add_js('datatable/dnscache.js?'._DATETIME)
+						->write_view('left-content', 'admin/dnscache/dnscache_view',$data)
+						->render();
+	}
+
+	function json()
+	{
+		
+		$dns = $this->mikrotik_api->ip()->dns()->get_all_dns_cache_all();
+		$output = array("aaData" => array());
+		$count = 1;
+		
+		foreach ($dns as $row)
+		{
+			$regtable = $m;
+			$jdata = array();
+			$jdata[] .= $count++;
+			$jdata[] .= $row['.id'];
+			$jdata[] .= $row['name'];
+			$jdata[] .= isset($row['type']) ? $row['type'] : ''; 
+			$jdata[] .= isset($row['data']) ? $row['data'] : '';
+			$jdata[] .= $row['ttl'];
+
+			$output['aaData'][] = $jdata;
+
+		}
+
+		$this->output->enable_profiler(FALSE);
+		
+
+		print json_encode($output);
+
+	}
+	
+	function help()
+	{
+		$data['head'] = "วิธีการใช้งาน";
+		$data['content'] = "<p>Dhcp list</p>";
+		
+		$this->output->enable_profiler(FALSE);
+		$this->load->view('admin/help', $data);
+	}
+
+}
+/* End of file connections.php */
+/* Location: ./system/nostradius/controllers/admin/connections.php */

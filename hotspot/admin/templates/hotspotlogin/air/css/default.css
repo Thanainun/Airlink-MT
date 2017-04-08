@@ -1,0 +1,291 @@
+
+
+/* -----------------------------------------------------------------------------
+
+    TABLE OF CONTENT
+
+    1.) General
+    2.) Typography
+    3.) Components
+    4.) Header
+    5.) Sections
+    6.) Footer
+    7.) Responsive
+
+----------------------------------------------------------------------------- */
+
+
+/* -----------------------------------------------------------------------------
+
+    1.) GENERAL
+
+----------------------------------------------------------------------------- */
+
+body, #wrapper { color: #ebeff2; background: #25282f; }
+body.boxed { background-image: url('../images/background_body.jpg'); }
+body.boxed #wrapper {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+a { color: #ea183f; }
+
+
+/* -----------------------------------------------------------------------------
+
+    2.) TYPOGRAPHY
+
+----------------------------------------------------------------------------- */
+
+    /* -------------------------------------------------------------------------
+        LISTS
+    ------------------------------------------------------------------------- */
+
+    ul.alternating .even { color: #626f7f; }
+
+/* -----------------------------------------------------------------------------
+
+    3.) COMPONENTS
+
+----------------------------------------------------------------------------- */
+
+    /* -------------------------------------------------------------------------
+        ALERT MESSAGES
+    ------------------------------------------------------------------------- */
+
+    p.alert.warning { color: #9c0629; background: #fa8492; border-color: #fd96a2; }
+    p.alert.success { color: #15855a; background: #6cd8a2; border-color: #83e4b4; }
+    p.alert.info { color: #004d7e; background: #44bbe2; border-color: #5fc8eb; }
+    p.alert.notification { color: #954612; background: #fac85b; border-color: #fdcf6c; }
+
+    /* -------------------------------------------------------------------------
+        BUTTON
+    ------------------------------------------------------------------------- */
+
+    .rgba .button { text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+        -webkit-box-shadow: 0 3px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -30px 30px rgba(0,0,0,0.08);
+        -moz-box-shadow: 0 3px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -30px 30px rgba(0,0,0,0.08);
+        box-shadow: 0 3px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -30px 30px rgba(0,0,0,0.08);
+    }
+    .rgba .button:hover {
+        -webkit-box-shadow: 0 3px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -30px 30px rgba(0,0,0,0.08);
+        -moz-box-shadow: 0 3px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -30px 30px rgba(0,0,0,0.08);
+        box-shadow: 0 3px 3px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -30px 30px rgba(0,0,0,0.08);
+    }
+    .rgba .button:active {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    .button.style1 { color: #FFF; background: #068ef4; }
+    .button.style2 { color: #FFF; background: #ea0a40; }
+
+    /* -------------------------------------------------------------------------
+        CONTENT BOX
+    ------------------------------------------------------------------------- */
+
+    .content-box { background: #292e34;
+        -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+        -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+    .content-box .divider { border-color: #34393f; }
+
+    /* -------------------------------------------------------------------------
+        CTA MESSAGE FULL
+    ------------------------------------------------------------------------- */
+
+    .cta-message-full { color: #FFF; background-image: url('../images/background.jpg'); }
+
+    /* -------------------------------------------------------------------------
+        DIVIDER
+    ------------------------------------------------------------------------- */
+
+    .divider { border-color: #2f3239; }
+
+    /* -------------------------------------------------------------------------
+        DEFAULT FORM
+    ------------------------------------------------------------------------- */
+
+    .default-form input,
+    .default-form textarea { color: #FFF; background: rgba(0,0,0,0.6);
+       }
+    .default-form input.placeholder,
+    .default-form textarea.placeholder { color: #7b8495; }
+    .default-form .error-ico { color: #ea183f; }
+
+    /* -------------------------------------------------------------------------
+        PRICING TABLE
+    ------------------------------------------------------------------------- */
+
+    .pricing-table .column { background: #1e2126; }
+    .pricing-table .column.popular { background: #25282f;
+        -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        -moz-box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .pricing-table .column .title { background: #2262cc; }
+    .rgba .pricing-table .column .title { border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 3px solid rgba(0,0,0,0.1); }
+    .pricing-table .column .title .label span { color: #788A10; background: #e5fb1c; text-shadow: 0 1px 1px rgba(255,255,255,0.5); }
+    .pricing-table .column .title h3 { text-shadow: 0 1px 1px rgba(0,0,0,0.5); }
+    .pricing-table .column .price { background: #2a313b; }
+    .pricing-table .column .price span { color: #6e9cea; }
+    .pricing-table .column .att { border-color: #171a1f; }
+    .pricing-table .column.popular .att { border-color: #1e2126; }
+    .pricing-table .column .submit a { color: #FFF; background: #ea183f; text-shadow: 0 1px 1px rgba(0,0,0,0.5); }
+    .rgba .pricing-table .column .submit a { border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 3px solid rgba(0,0,0,0.1); }
+
+    /* -------------------------------------------------------------------------
+        PROGRESS BAR
+    ------------------------------------------------------------------------- */
+
+    .progressbar { background: #1d2025; }
+    .rgba .progressbar {
+        -webkit-box-shadow: 0 1px 1px rgba(255,255,255,0.1), inset 0 4px 4px rgba(0,0,0,0.2);
+        -moz-box-shadow: 0 1px 1px rgba(255,255,255,0.1), inset 0 4px 4px rgba(0,0,0,0.2);
+        box-shadow: 0 1px 1px rgba(255,255,255,0.1), inset 0 4px 4px rgba(0,0,0,0.2);
+    }
+    .progressbar span { background: #36a8ff; }
+    .rgba .progressbar span {
+        -webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.4), inset 0 5px 4px rgba(255,255,255,0.3), inset 0 -8px 4px rgba(0,0,0,0.2);
+        -moz-box-shadow: 0 2px 2px rgba(0,0,0,0.4), inset 0 5px 4px rgba(255,255,255,0.3), inset 0 -8px 4px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 2px rgba(0,0,0,0.4), inset 0 5px 4px rgba(255,255,255,0.3), inset 0 -8px 4px rgba(0,0,0,0.2);
+    }
+
+
+/* -----------------------------------------------------------------------------
+
+    4.) HEADER
+
+----------------------------------------------------------------------------- */
+
+header { background: #191a1e; border-bottom-color: #121315; }
+
+    /* -------------------------------------------------------------------------
+        MAIN NAV
+    ------------------------------------------------------------------------- */
+
+    header .nav-toggle { color: #FFF; background: #2391e6; }
+    header .nav-toggle.active { color: #FFF; background: #217fc7; }
+    nav.main > ul > li > a { color: #8c949f; }
+    nav.main > ul > li > a:hover,
+    nav.main > ul > li.active > a { color: #FFF; }
+    nav.main .indicator { background: #36a8ff; }
+    /* lvl 2 */
+    nav.main > ul > li > ul { background: #FFF; }
+    nav.main > ul > li > ul li { border-color: #ededed;}
+    nav.main > ul > li > ul a { color: #7f949c; }
+    nav.main > ul > li > ul a:hover { color: #FFF; background: #72c2ff; }
+
+/* -----------------------------------------------------------------------------
+
+    5.) SECTIONS
+
+----------------------------------------------------------------------------- */
+
+    .section-title { border-bottom-color: #373c42; }
+    .section-title h2 span { color: #36a8ff; }
+    .section-content .lead { color: #626f7f; }
+
+    /* -------------------------------------------------------------------------
+        INTRODUCTION SECTION
+    ------------------------------------------------------------------------- */
+
+    #introduction { color: #FFF; background-image: url('../images/background.jpg'); text-shadow: 0 1px 1px rgba(0,0,0,0.3); }
+    #introduction .scroll-down a { color: #FFF; }
+
+    /* -------------------------------------------------------------------------
+        SERVICES SECTION
+    ------------------------------------------------------------------------- */
+
+    #services .services-list { background: #292e34; }
+    #services .services-list .ico { color: #36a8ff; }
+    #services .services-list .service p { color: #90949d; }
+    #services .services-list .service a { color: #FFF; }
+
+    /* -------------------------------------------------------------------------
+        PORTFOLIO SECTION
+    ------------------------------------------------------------------------- */
+
+    #portfolio .category-list li button { color: #FFF; }
+    #portfolio .category-list li:hover { background: #5f6f7e; }
+    #portfolio .category-list li.active { background: #e20a3c; }
+
+    /* -------------------------------------------------------------------------
+        TEAM SECTION
+    ------------------------------------------------------------------------- */
+
+    #team { background: #1d2025; }
+    #team .section-header { background-image: url('../../dummies/background.jpg'); }
+    #team .team-member { background: #22252a; }
+    .rgba #team .team-member .thumb img {
+        box-shadow: 0px 0px 0px 7px rgba(0,0,0,0.2);
+        -webkit-box-shadow: 0px 0px 0px 7px rgba(0,0,0,0.2);
+        -moz-box-shadow: 0px 0px 0px 7px rgba(0,0,0,0.2);
+    }
+    #team .team-member h4 { color: #60707d; }
+    #team .team-member .social a { color: #FFF; background: #2e3138; }
+    #team .team-member .social a:hover { background: #3b3f48; }
+    #team .team-member .social a:active { background: #2e3138; }
+
+    /* -------------------------------------------------------------------------
+        CONTACT SECTION
+    ------------------------------------------------------------------------- */
+
+    #contact .contact-details li .ico { color: #ea183f; }
+    #contact .contact-details li a { color: #FFF; }
+
+    /* -------------------------------------------------------------------------
+        SUBSCRIBE SECTION
+    ------------------------------------------------------------------------- */
+
+    #subscribe { background: #292e34; }
+    .rgba #subscribe { border-top: 1px solid rgba(255,255,255,0.05); }
+
+    /* -------------------------------------------------------------------------
+        TWITTER FEED
+    ------------------------------------------------------------------------- */
+
+    #twitter-feed { color: #ecf1f4; background: #444f60; }
+    #twitter-feed .feed a { color: #FFF; }
+    #twitter-feed .ico { color: #FFF; }
+    #twitter-feed .feed .tweet_time a { color: #FFF; }
+
+
+/* -----------------------------------------------------------------------------
+
+    6.) FOOTER
+
+----------------------------------------------------------------------------- */
+
+footer { color: #8c949f; background: #1d2025; }
+footer a { color: #FFF; }
+footer .social a { color: #FFF; background: #2e3138; }
+footer .social a:hover { background: #3b3f48; }
+footer .social a:active { background: #2e3138; }
+
+
+/* -----------------------------------------------------------------------------
+
+    7.) RESPONSIVE
+
+----------------------------------------------------------------------------- */
+
+    /* -------------------------------------------------------------------------
+        TABLET LANDSCAPE
+    ------------------------------------------------------------------------- */
+
+    @media (max-width: 979px) {
+
+    nav.main > ul > li { border-color: #121315; }
+
+    }
+
+    /* -------------------------------------------------------------------------
+        TABLET PORTRAIT
+    ------------------------------------------------------------------------- */
+
+    @media (max-width: 767px) {
+
+    body.boxed { background-image: none; }
+
+    }

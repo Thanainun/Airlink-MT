@@ -1,0 +1,6 @@
+Sampling tun0 (2 seconds average)...                                    30 packets sampled in 2 seconds
+Traffic average for tun0
+
+      rx           20 kbit/s             7 packets/s
+      tx           12 kbit/s             7 packets/s
+

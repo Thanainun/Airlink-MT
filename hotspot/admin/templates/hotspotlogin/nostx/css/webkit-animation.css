@@ -1,0 +1,155 @@
+@charset "utf-8";
+/* Timeline Animation*/
+
+/* Section 1 BG */
+@-webkit-keyframes bg-2 {
+	0% { opacity:0; }
+	20% { opacity:1; }
+	30% { opacity:1; }
+	50% { opacity:0; }
+	60% { opacity:0; }
+	80% { opacity:0; }
+	90% { opacity:0; }
+	100% { opacity:0; }
+}
+@-webkit-keyframes bg-3 {
+	0% { opacity:0; }
+	20% { opacity:0; }
+	30% { opacity:1; }
+	50% { opacity:1; }
+	60% { opacity:0; }
+	80% { opacity:0; }
+	90% { opacity:0; }
+	100% { opacity:0; }
+}
+@-webkit-keyframes bg-4 {
+	0% { opacity:0; }
+	20% { opacity:0; }
+	30% { opacity:0; }
+	50% { opacity:0; }
+	60% { opacity:1; }
+	80% { opacity:1; }
+	90% { opacity:0; }
+	100% { opacity:0; }
+}
+
+@-webkit-keyframes grass-2 {
+	0% { opacity:0; }
+	20% { opacity:0; }
+	30% { opacity:0; }
+	50% { opacity:0; }
+	60% { opacity:1; }
+	80% { opacity:1; }
+	90% { opacity:0; }
+	100% { opacity:0; }
+}
+
+@-webkit-keyframes h-night-font {
+	0% { color:#003080; }
+	50% { color:#003080; }
+	60% { color:#04b5ff; }
+	80% { color:#04b5ff; }
+	90% { color:#003080;}
+	100% { color:#003080; }
+}
+
+@-webkit-keyframes night-font {
+	0% { color:#666; }
+	50% { color:#666; }
+	60% { color:#fff; }
+	80% { color:#fff; }
+	90% { color:#666; }
+	100% { color:#666; }
+}
+
+@-webkit-keyframes meteor-1 {
+	0% { -webkit-transform:translate(0px,0px); opacity:0; }
+	64% { -webkit-transform:translate(0px,0px);  opacity:0; }
+	64.5% { -webkit-transform:translate(-300px,250px); opacity:1; }
+	65% { -webkit-transform:translate(-600px,500px); opacity:0; }
+	100% { -webkit-transform:translate(-600px,500px); opacity:0; }
+}
+
+@-webkit-keyframes meteor-2 {
+	0% { -webkit-transform:translate(-600px,0px); opacity:0; }
+	70% { -webkit-transform:translate(-600px,0px);  opacity:0; }
+	70.5% { -webkit-transform:translate(-900px,250px); opacity:1; }
+	71% { -webkit-transform:translate(-1200px,500px); opacity:0; }
+	100% { -webkit-transform:translate(-1200px,500px); opacity:0; }
+}
+
+/* Cloud */
+@-webkit-keyframes cloud-1 {
+	0% { background-position:0px 0px; }
+	100% { background-position:-2000px 0px; }
+}
+
+/* Bird */
+@-webkit-keyframes bird {
+	0% { top:60%; left:-20%; -webkit-transform:scale(1) rotateY(0deg); }
+	30% { top:64%; left:20%; -webkit-transform:scale(1) rotateY(0deg); }
+	40% { top:65%; left:32%; -webkit-transform:scale(0.7) rotateY(-5deg);  }
+	50% { top:64%; left:34%; -webkit-transform:scale(0.7) rotateY(-5deg); }
+	65% { top:50%; left:65%; -webkit-transform:scale(1) rotateY(0deg); }
+	75% { top:50%; left:65%; -webkit-transform:scale(1) rotateY(0deg); }
+	90% { top:55%; left:120%; -webkit-transform:scale(0.5) rotateY(0deg); }
+	100% { top:60%; left:120%; -webkit-transform:scale(0.5) rotateY(0deg); }
+}
+
+
+@-webkit-keyframes bird-2 {
+0% { left:-10%; }	
+100% { left:100%; }	
+}
+
+
+@-webkit-keyframes bird-wing {
+	0% { opacity:0; }
+	25% { opacity:1; }
+	50% { opacity:1; }
+	75% { opacity:0; }
+	100% { opacity:0; }
+}
+
+@-webkit-keyframes bird-wing-2 {
+	0% { opacity:1; }
+	25% { opacity:1; }
+	50% { opacity:0; }
+	75% { opacity:0; }
+	100% { opacity:1; }
+}
+
+
+/* Leaf */
+
+@-webkit-keyframes leafs {
+	0% { background:url(../img/leafs.png);}
+	5% { background:url(../img/leafs-2.png);}
+	10% { background:url(../img/leafs.png);}
+	15% { background:url(../img/leafs.png);}
+	20% { background:url(../img/leafs-2.png);  }
+	30% { background:url(../img/leafs.png); }	
+	40% { background:url(../img/leafs-2.png); }
+	60% { background:url(../img/leafs-2.png); }
+	90% { background:url(../img/leafs.png); }
+	100% { background:url(../img/leafs.png); }
+}
+@-webkit-keyframes leaf1 {
+	0% { top:0%; right:0%; -webkit-transform:rotateX(-90deg) translateZ(0px) scale(1); }
+	100% { top:50%; right:120%; -webkit-transform:rotateX(360deg) translateZ(-480px) scale(0.5); }
+}
+@-webkit-keyframes leaf2 {
+	0% { top:0%; right:0%; -webkit-transform:rotateY(-30deg) rotateX(-30deg) translateZ(0px) scale(1); }
+	100% { top:60%; right:120%; -webkit-transform:rotateY(-90deg) rotateX(-360deg) translateZ(-300px) scale(2); }
+}
+@-webkit-keyframes leaf3 {
+	0% { top:0%; right:5%; -webkit-transform:rotateY(-30deg) rotateX(-30deg) translateZ(0px)  scale(0.5); }
+	100% { top:120%; right:90%; -webkit-transform:rotateY(-240deg) rotateX(360deg) translateZ(180px)  scale(1.5); }
+}
+
+/* Main Features */
+@-webkit-keyframes main-feature {
+	0% { -webkit-transform:translateY(0px); }
+	50% { -webkit-transform:translateY(-15px); }
+	100% { -webkit-transform:translateY(0px);	 }
+}

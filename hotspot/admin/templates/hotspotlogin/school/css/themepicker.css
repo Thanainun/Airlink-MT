@@ -1,0 +1,116 @@
+/***********************************
+Theme Picker Styles
+***********************************/
+.theme-picker{
+    position: fixed;
+    background: #666;
+    left: -320px;
+    top: 80px;
+    padding: 0 0 0 60px;
+    text-align: center;
+    overflow: hidden;
+    -webkit-border-radius: 0 4px 4px 0;
+       -moz-border-radius: 0 4px 4px 0;
+        -ms-border-radius: 0 4px 4px 0;
+            border-radius: 0 4px 4px 0;
+    -webkit-background-clip: padding-box;
+       -moz-background-clip: padding;
+        -ms-background-clip: padding;
+            background-clip: padding-box;
+    -webkit-box-shadow: -2px 2px 2px 0 rgba(0, 0, 0, .3);
+       -moz-box-shadow: -2px 2px 2px 0 rgba(0, 0, 0, .3);
+        -ms-box-shadow: -2px 2px 2px 0 rgba(0, 0, 0, .3);
+            box-shadow: -2px 2px 2px 0 rgba(0, 0, 0, .3);
+    -webkit-transition: left .5s cubic-bezier(0.680, -0.550, 0.265, 1.550);
+       -moz-transition: left .5s cubic-bezier(0.680, -0.550, 0.265, 1.550);
+         -ms-transition: left .5s cubic-bezier(0.680, -0.550, 0.265, 1.550);
+            transition: left .5s cubic-bezier(0.680, -0.550, 0.265, 1.550);
+    }
+
+.theme-picker.on{
+    left: -40px;
+    }
+
+.theme-picker .settings-btn,
+.theme-picker .themecolor,
+.theme-picker .picker-icons{
+    display: block;
+    float: left;
+    }
+
+.theme-picker .picker-icons{
+    font-size: 24px;
+    line-height: 2.09;
+    padding-left: 14px;
+    cursor: pointer;
+    -webkit-transition: all .2s ease-in-out;
+       -moz-transition: all .2s ease-in-out;
+        -ms-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+    }
+.theme-picker .picker-icons:hover{
+    color: #999;
+    -webkit-transform: scale(1.2);
+       -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2);
+    }
+.theme-picker .picker-icons.icon-apple{
+    border-left: 1px solid #888;
+    }
+.theme-picker .picker-icons.selected{
+    color: #fff;
+    }
+.theme-picker .settings-btn{
+    cursor: pointer;
+    margin-left: 20px;
+    padding: 10px 20px;
+    border-left: 1px solid #888;
+    color: #fff;
+    font-size: 2em;
+    }
+
+.theme-picker .settings-btn:hover{
+    opacity: 0.8
+    }
+
+.theme-picker .themecolor{
+    width: 24px;
+    height: 24px;
+    margin: 14px 10px 0 0;
+    text-indent: -9999px;
+    cursor: pointer;
+    padding: 0;
+    border: 2px solid #888;
+    -webkit-transition: all .2s ease-in-out;
+       -moz-transition: all .2s ease-in-out;
+        -ms-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+    -webkit-border-radius: 50%;
+       -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+            border-radius: 50%;
+    }
+
+.theme-picker .themecolor:hover {
+    border-color: #999;
+    -webkit-transform: scale(1.2);
+       -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2);
+    }
+.theme-picker .themecolor:last-child      { margin-right: 0 }
+.theme-picker .selected,
+.theme-picker .selected.themecolor:hover  { border-color: #fff }
+
+.themecolor.green   { background-color: #00ac92 }
+.themecolor.red     { background-color: #E65C53 }
+.themecolor.blue    { background-color: #1D639F }
+.themecolor.dark    { background-color: #2B3747 }
+
+@media only screen and (max-width: 480px){
+    .theme-picker{
+        top: 40px;
+    }
+
+}

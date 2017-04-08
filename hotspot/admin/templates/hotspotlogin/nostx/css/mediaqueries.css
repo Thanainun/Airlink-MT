@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/* Media Queries */
+@media only screen and (max-height : 769px) {
+	
+	/* Resize Content in Section */
+	#main {
+		height:440px;
+	}
+	#section-2-box .wrapper {
+		height:530px;
+		padding:2% 0;
+	}
+	#main-features {
+		padding: 2%;
+	background: rgba(0,0,0,0.4);
+	color: #fff;
+	}
+		
+	/* Footer */
+	footer {
+		top:290%;
+	}
+}
+

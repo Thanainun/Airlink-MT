@@ -1,0 +1,157 @@
+* {padding: 0; margin: 0; outline: 0;}
+
+
+
+#content { 
+	font-size: 14px;
+	color: #333;
+	border: 3px ;
+	display: inline;
+}
+
+#header {
+	color: #333;
+	width: 400px;
+	height: 30px;
+	padding: 2px 0px 10px 375px;
+	float: left;
+}
+
+#footer { 
+	font-size: 9px;
+	width: 700px;
+	height: 20px;
+	padding: 5px 0px 0px 90px;
+	clear: both;
+	color: #333;
+	text-align: center;
+}
+
+#leftcolumn {
+	font-size: 11px;
+	color: #333;
+	width: 90px;
+	float: left;
+	padding-top: 5px;
+}
+
+#placeholder {
+	width:auto;
+	height:450px;
+	
+	
+}
+
+#tooltip {
+	position: absolute;
+	display: none;
+	padding: 2px;
+	opacity: 0.80;
+	color: #fff;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border: 1px solid #067DB9;
+	background-color: #27B0F5;
+}
+
+
+
+abbr {
+	border-bottom: none;
+	cursor: help;
+}
+
+table.graph {
+	width: 1100px;
+	text-align: center;
+}
+
+table.graph thead tr {
+	background: #27B0F5;
+	text-align: center;
+	font-weight: bold;
+}
+
+table.graph tr.odd {
+	background: rgba(151, 216, 248, 0.41);
+}
+
+table.graph tbody tr.highlight, table.graph tbody tr:hover {
+	background: rgba(39, 176, 245, 0.59);
+}
+
+table.graph td.time {
+	text-align: left;
+}
+
+label {
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#F5F5F5),to(#F1F1F1));
+background-image: -webkit-linear-gradient(top,#F5F5F5,#F1F1F1);
+-webkit-border-radius: 2px;
+-webkit-user-select: none;
+background-color: #F5F5F5;
+background-image: linear-gradient(top,#F5F5F5,#F1F1F1);
+background-image: -o-linear-gradient(top,#F5F5F5,#F1F1F1);
+border: 1px solid #DCDCDC;
+border: 1px solid rgba(0, 0, 0, 0.1);
+border-radius: 2px;
+color: #666;
+cursor: default;
+font-size: 13px;
+font-weight: bold;
+height: 26px;
+line-height: 30px;
+min-width: 54px;
+padding: 1px 4px;
+text-align: center;
+display: inline-block;
+}
+
+label.radio_checked {
+	background: #27B0F5;
+	color: #fff;
+}
+
+label.radio_unchecked  {
+	background: #eee;
+	color: #979797;
+	cursor: pointer;
+}
+
+label.radio_unchecked:hover {
+	background: #e4e4e4;
+}
+
+#types label {
+	font-size: 18px;
+	padding-right: 6px;
+}
+
+select {
+	border: 0;
+	width: 85px;
+	height: 25px;
+	font-size: 16px;
+	color: #979797;
+	margin-top: 3px;
+}
+
+p.warning {
+	color: #f00;
+	font-weight: bold;
+}
+
+/* do not edit! (needed for tabs)*/
+.crirHidden {
+	content:"";
+	position: absolute;
+	left: -10000px;
+}
+.legendLabel {
+	padding-left: 1px;
+}
+.left {
+float: left;
+margin-right: 55px;
+}

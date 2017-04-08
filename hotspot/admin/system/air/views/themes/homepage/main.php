@@ -1,0 +1,1 @@
+<?php $this->load->file(set_realpath('').'templates/homepage/index.php'); ?>

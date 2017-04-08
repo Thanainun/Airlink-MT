@@ -1,0 +1,29 @@
+/* -----------------------------------------------------------------------------
+
+    Prospero
+    by Shakespeare Themes
+
+----------------------------------------------------------------------------- */
+
+
+* { zoom: 1; }
+
+.default-form input.error, .default-form textarea.error { color: #ea183f; }
+
+#portfolio .portfolio-list li { margin-bottom: 10px; }
+#subscribe .submit span { display: none; }
+#subscribe .submit i.arrow { display: block; }
+#subscribe .submit.loading i.arrow { display: none; }
+#subscribe .submit.loading i.icon-spinner { display: block;
+    animation-name: loading; animation-duration: 1s; animation-timing-function: linear; animation-iteration-count: infinite;
+    -moz-animation-name: loading; -moz-animation-duration: 1s; -moz-animation-timing-function: linear; -moz-animation-iteration-count: infinite;
+    -webkit-animation-name: loading; -webkit-animation-duration: 1s; -webkit-animation-timing-function: linear; -webkit-animation-iteration-count: infinite;
+    -o-animation-name: loading; -o-animation-duration: 1s; -o-animation-timing-function: linear; -o-animation-iteration-count: infinite;
+}
+
+.button, .rounded, #team .team-member, .progressbar, .progressbar span,
+.pricing-table .column .title .label span, .default-form input, .default-form textarea,
+.content-box, #portfolio .category-list li, .alert { position: relative; z-index: 10; }
+
+#screen-width,
+#screen-width span:before { content: "1199"; }

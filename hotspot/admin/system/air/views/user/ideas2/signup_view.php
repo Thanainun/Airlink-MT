@@ -1,0 +1,269 @@
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+	
+			<a class="brand pull-left" href="http://172.0.0.1/">
+			Airlink
+			</a>
+	
+			<a href="http://172.0.0.1/" class="btn btn-navbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+				<ul id="nav-list" class="nav pull-right hidden-desktop">
+					<li><?=anchor("signup/languser/thai","<span>ภาษาไทย</span>");?></li>
+					<li><?=anchor("signup/languser/english","<span>English</span>");?></li>
+				</ul>
+		
+			<div class="nav-collapse collapse">
+				<ul id="nav-list" class="nav pull-right">
+					<li><a href="signup">Refresh Page (F5)</a></li>
+					<li><?=anchor("signup/languser/thai","<span>ภาษาไทย</span>");?></li>
+					<li><?=anchor("signup/languser/english","<span>English</span>");?></li>
+				</ul>
+			</div>
+		
+		</div>
+	</div>
+</div>
+<div class="header_bottom">
+  <?=$this->form_validation->error_string;?>
+  
+  <!-- Left column/section -->
+<? if ($complate) { ?>
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span7">
+        <div class="widget widget-4">
+          <div class="widget-head">
+            <h4 class="heading glyphicons home"><i></i><?=$this->lang->line('register_Regi_successful1') ?></h4>
+          </div>
+          <div class="widget-body">
+            <p><?=$this->lang->line('register_Regi_successful2') ?></p>
+            <p><?=$this->lang->line('register_Regi_successful3') ?></p>
+            <li>Username 	=
+              <?=$user?>
+            </li>
+            <li>Password 	=
+              <?=$pass?>
+            </li>
+            <p><?=$this->lang->line('register_Regi_successful4') ?>
+              <?=$plan?> <?=$this->lang->line('register_Regi_successful5') ?>
+            </p><br><br>
+              <a href="gologin" class="submit button style2"><?=$this->lang->line('button_Return_to_login_page') ?></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="separator"></div>
+  <? } else {?>
+  <? if(!$invalid) { ?>
+  <section id="contact"> 
+    
+    <div class="container content container-fluid" id="home">
+    <!-- SECTION CONTENT : begin -->
+    <div class="section-content">
+    <div class="container">
+    <div class="row-fluid">
+    <div class="span8"> 
+      
+      <!-- CONTACT FORM : begin -->
+      <section class="various-content">
+        
+        <?=form_open($this->uri->segment(1).'/','id="form" class="validate default-form various-content" autocomplete="off"')?>
+        
+        <!-- FORM VALIDATION ERROR MESSAGE : begin -->
+        <p class="alert warning validation" style="display: none;"><i class="ico icon-warning-sign"></i><strong>Fields with (*) are required!</strong><br />
+          All required fields must be filled correctly.</p>
+        <!-- FORM VALIDATION ERROR MESSAGE : end --> 
+        
+        <!-- SENDING REQUEST ERROR MESSAGE : begin -->
+        <p class="alert warning request" style="display: none;"><i class="ico icon-warning-sign"></i><strong>Form not sent!</strong><br />
+          There was a connection problem. Try again later.</p>
+        <!-- SENDING REQUEST ERROR MESSAGE : end --> 
+        <h3>
+          <?=$this->lang->line('register_header') ?>
+        </h3>
+        <p>		*** <b>ชื่อในการเข้าสู่ระบบ</b>  อย่างน้อย 6 ตัวอักษร ถ้าน้อยกว่านี้จะทำให้ไม่สามารถเข้าสู่ระบบได้
+		<br />	*** <b>กรุณากรอกข้อมูลจริง</b> เพื่อประโยชน์ของท่านเอง กรณี User Account มีปัญหา
+		</p>
+
+		<!-- FORM FIELDS : begin -->
+        <div class="form-fields various-content">
+        <div class="row-fluid">
+        <div class="span6">
+          <p> 
+            <!-- add class 'required' to all mandatory fields -->
+            
+            <?=form_input('username','','type="text" maxlength="70" required="required" class="required" id="username" placeholder='.$this->lang->line('register_username').' ')?>
+          </p>
+        </div>
+        <div class="span6">
+          <p>
+            <?=form_input('password','','type="text" maxlength="70" required="required" id="password" placeholder='.$this->lang->line('register_password').'')?>
+          </p>
+        </div>
+        <div class="row-fluid">
+          <div class="span6">
+            <p> 
+              <!-- add class 'email' to email field in addition to 'required' -->
+              <?=form_input('firstname','','type="text" maxlength="70" required="required" id="firstname" placeholder='.$this->lang->line('register_firstname').'')?>
+            </p>
+          </div>
+          <div class="span6">
+            <p>
+              <?=form_input('lastname','','type="text" maxlength="70" required="required" id="lastname" placeholder='.$this->lang->line('register_lastname').'')?>
+            </p>
+          </div>
+        </div>
+        <p>
+          <?=form_input(array('name'=>'personal_id','minlength'=>'13'),'',' title="'.$this->lang->line('register_personal_id').'"  required="required" id="personal_id" placeholder='.$this->lang->line('register_personal_id').'')?>
+        </p>
+        <div class="row-fluid">
+        <div class="span6">
+          <p>
+            <?=form_input('surename','','type="text" placeholder='.$this->lang->line('register_surename').'')?>
+          </p>
+        </div>
+        <div class="span6">
+          <p>
+            <?= form_dropdown('gender',array(''=>''.$this->lang->line('register_gender').'','male'=>'ชาย','famale'=>'หญิง'),'','')?>
+          </p>
+        </div>
+        <div class="row-fluid">
+        <div class="span6">
+          <p>
+            <?=form_input(array('name'=>'phone'),'',' required="required" placeholder="'.$this->lang->line('register_phone').'"')?>
+          </p>
+        </div>
+        <div class="span6">
+          <p>
+            <?=form_input(array('name'=>'email','type'=>'email'),'',' maxlength="75" required="required" id="email" placeholder='.$this->lang->line('register_email').'')?>
+          </p>
+        </div>
+        <div class="row-fluid">
+        <div class="span12">
+          <p>
+            <?
+											$txtdata = array(
+												'name'      => 'note',
+												'id'        => 'note',
+												'value'     => '',
+												'rows'   	=> '5',
+												'cols'      => '20',
+												'style'     => 'width:480px',
+												'placeholder' => ''.$this->lang->line('register_message').''
+											);
+											echo form_textarea($txtdata);
+										?>
+          </p>
+        </div>
+        <div class="row-fluid">
+        <div class="span6">
+          <p>
+            <?=form_input('address1','','type="text" required="required" placeholder='.$this->lang->line('register_address1').'')?>
+          </p>
+        </div>
+        <div class="span6">
+          <p>
+            <?=form_input('address2','','type="text" id="address2" placeholder='.$this->lang->line('register_address2').'')?>
+          </p>
+        </div>
+        <div class="row-fluid">
+          <div class="span6">
+            <p>
+              <?=form_input('district','','type="text" placeholder='.$this->lang->line('register_tambon').' ')?>
+            </p>
+          </div>
+          <div class="span6">
+            <p>
+              <?=form_input('amphur','','type="text" placeholder='.$this->lang->line('register_amphor').' ')?>
+            </p>
+          </div>
+          <div class="row-fluid">
+          <p>
+          <?=form_input('province','','type="text" placeholder='.$this->lang->line('register_city').'')?>
+          </p>
+          </div>
+          <div class="row-fluid">
+            <div class="span6 hidden-desktop">
+              <button class="btn btn-primary" type="reset">
+              <?=$this->lang->line('register_clear'); ?>
+              </button>
+            <br /><br></div>
+          
+            <div class="row-fluid">
+            <div class="span6 visible-desktop">
+              <button class="btn btn-primary" type="reset">
+              <?=$this->lang->line('register_clear'); ?>
+              </button>
+			  <button class="btn btn-primary" type="submit">
+              <?=$this->lang->line('register_submit'); ?>
+              </button>
+            </div>
+            <div class="span6 ">
+				<a class="btn btn-primary" href="http://172.0.0.1"><?=$this->lang->line('register_submit1'); ?></a>  
+           </div>		  
+        <!-- FORM FIELDS : end -->
+        </div> 
+        </form>
+      </section>
+      <!-- CONTACT FORM : end --> 
+    </div>
+  </section>
+  <!-- CONTACT INFO: end --> 
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACT : end --> 
+
+<!-- CONTACT INFO: begin -->
+<!-- FOOTER -->
+<div class="footer container container-fluid">
+
+	<!-- COPYRIGHT - EDIT HOWEVER YOU WANT! -->
+	<div id="copyright">
+		Copyright &copy; 2013 Airlink, Inc.<br>
+    <b><?=$this->lang->line('contact_2') ?></b>	<?=$address; ?> &nbsp;</strong> Tel :<?=$tel; ?> &nbsp; E-mail :<?=$mail; ?>
+	</div>
+	
+	<!-- CREDIT - PLEASE LEAVE THIS LINK! -->
+	<div id="credits">
+		<a href="">Theme</a> by <a href="#">iDeas</a>.
+	</div>
+
+</div>
+
+<? } else if ($invalid) {?>
+<div class="columns">
+  <div class="grid_5 first">
+    <hr >
+    <div  class="message warning">
+      <div align="center">
+        <h3>ขออภัย <br />
+          ระบบยังไม่เปิดรับลงทะเบียน</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<? 
+		}
+	
+	} 
+?>
+<div class="clear">&nbsp;</div>
+</section>
+
+<!-- SCRIPTS : begin --> 
+

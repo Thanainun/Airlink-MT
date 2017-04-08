@@ -1,0 +1,171 @@
+.bg1 { background-image: url(../img/bg/bg1@2880.jpg) }
+.bg2 { background-image: url(../img/bg/bg2@2880.jpg) }
+.bg3 { background-image: url(../img/bg/bg3@2880.jpg) }
+.bg4 { background-image: url(../img/bg/bg4@2880.jpg) }
+
+@media all and (max-width: 1680px),
+	   all and (max-device-width: 1680px) { 
+
+	.bg1 { background-image: url(../img/bg/bg1@1680.jpg) }
+	.bg2 { background-image: url(../img/bg/bg2@1680.jpg) }
+	.bg3 { background-image: url(../img/bg/bg3@1680.jpg) }
+	.bg4 { background-image: url(../img/bg/bg4@1680.jpg) }	  
+}
+
+@media all and (max-width: 1440px),
+	   all and (max-device-width: 1440px) {
+
+	_body { background-image: url(../img/bg@1440.jpg) }	   
+	.bg1 { background-image: url(../img/bg/bg1@1440.jpg) }
+	.bg2 { background-image: url(../img/bg/bg2@1440.jpg) }
+	.bg3 { background-image: url(../img/bg/bg3@1440.jpg) }
+	.bg4 { background-image: url(../img/bg/bg4@1440.jpg) }
+}
+
+@media all and (max-width: 1439px),
+	   all and (max-device-width: 1439px) {
+		   
+	.bg1 { background-image: url(../img/bg/bg1@1024.jpg) }
+	.bg2 { background-image: url(../img/bg/bg2@1024.jpg) }
+	.bg3 { background-image: url(../img/bg/bg3@1024.jpg) }
+	.bg4 { background-image: url(../img/bg/bg4@1024.jpg) }	   
+		   
+	#bottom { height: 320px }
+	
+	#social {
+		margin: 65px auto 30px;
+		text-align: center;
+		height: 35px;
+		float: none;
+	}
+	
+	#countdown {
+		margin: 0 auto;
+		text-align: center;
+		float: none;
+	}
+	
+	#social > div,
+	#countdown > div {
+		display: inline-block;
+	}
+	
+	#countdown > div > div > p.label { 
+		margin-top: 135px; 
+		opacity: 1;
+	}
+
+}
+
+@media all and (max-width: 768px),
+	   all and (max-device-width: 768px) {
+		  
+	_body { background-image: url(../img/bg/bg@768.jpg) }
+	.bg1 { background-image: url(../img/bg/bg1@768.jpg) }
+	.bg2 { background-image: url(../img/bg/bg2@768.jpg) }
+	.bg3 { background-image: url(../img/bg/bg3@768.jpg) }
+	.bg4 { background-image: url(../img/bg/bg4@768.jpg) }
+
+}
+
+@media all and (max-width: 660px),
+	   all and (max-device-width: 660px) {
+	
+	header { top: 5% }
+	
+	header > h3 {
+		text-indent: 0;
+		text-align: center;
+		font-style: normal;
+		font-weight: 600;
+	}
+	
+	#bottom { height: 150px }
+	
+	#social {
+		font-size: 1.1em;
+		margin: 0px auto 30px;
+	}
+	
+	#social > div > ul {
+		margin: 10px 0;
+		display: block;
+		float: none;
+	}
+	
+	#social > div > span {
+		margin: 10px 0;
+		float: none;
+		display: block;
+	}
+	
+	#social > div > span:first-child {
+		margin-top: 15px;
+	}
+	
+	#countdown {
+		display: none;
+		font: 400 4em 'Rambla';
+	}
+	
+	#feedback {
+		position: absolute;
+		padding: 20px 0;
+		width: 100%;
+	}
+	
+	#feedback h2,
+	#feedback .descr,
+	#feedback .body {
+		padding: 0 20px;
+	}
+	
+	#feedback h2 {
+		font-size: 1.2em
+	}
+	
+	#feedback > .descr {
+		font-size: .85em;
+	}	
+	
+	#feedback > .body { 
+		height: 68px;
+		overflow: hidden; 
+	}
+
+	
+	#feedback > .close {
+		margin-top: -35px;
+		margin-right: 10px;	
+	}
+	
+	#feedback form > div.inp {
+		width: 100%;
+		text-align: center;
+		float: none;
+	}
+	
+	#feedback form > div.btn {
+		margin-top: 5px;
+		width: 100%;
+		float: none;
+		text-align: center;
+	}
+	
+	#feedback form button {
+		margin: 0;
+		float: none;
+	}
+	
+	span.email-no {
+		position: absolute;
+		margin-top: -23px;
+		right: 30px;
+		white-space: nowrap;
+	}
+	
+	#feedback .feedback-arr {
+		left: 50%;
+		margin-left: -25px;
+	}
+}

@@ -1,0 +1,776 @@
+/*
+* AppStar!
+* by Beantown Design
+* http://themeforest.net/user/BeantownDesign/portfolio
+*/
+/* Table of Contents
+==================================================
+    #Site Styles
+    #Main Navigation
+    #Buttons
+    #Titles
+    #Header Section
+    #Slider Section
+    #Purchase Section
+    #Features Section
+    #Screenshots Section
+    #Testimonials Section
+    #Team Section
+    #Video Section
+    #Newletter Signup Section
+    #Stay Connected Section
+    #Twitter Feed Section
+    #Footer Credits Section
+    #Icon Effects
+    #Media Queries
+	#Internet Explorer Adjustments
+*/
+
+
+/* #Site Styles
+================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5 { font-family: 'Noto Sans', sans-serif; color:#333 }
+body {
+    color:#333;
+    font-family: 'Cabin', sans-serif;
+}
+a,
+a:visited {
+    color: #eac14d;
+    text-decoration: none;
+	-webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+a:hover {
+    color: #c7a442;
+    text-decoration: none;
+}
+img { width: 100% }
+.container { padding-bottom: 20px }
+a.marker { display:block; 
+  display: block;
+  height: 105px; 
+  margin-top: -105px; 
+  visibility: hidden;
+} 
+
+
+/* #Main Navigation
+================================================== */
+
+#navigation { display: none }
+.nav a .side-icon {
+    font-size: 25px;
+    margin: 10px 0px 0 10px;
+    float: right;
+    color: #c7a442;
+}
+.nav a:hover .side-icon { color: #fff }
+.nav a:hover { color: #c7a442 }
+.sidr {
+    display: none;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    z-index: 999999;
+    width: 260px;
+    overflow-x: none;
+    overflow-y: auto;
+    font-size: 15px;
+    background: #f8f8f8;
+    color: #fff;
+}
+.sidr .sidr-inner { padding: 0 0 15px }
+.sidr .sidr-inner>p {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.sidr.right {
+    left: auto;
+    right: -260px;
+}
+.sidr.left {
+    left: -260px;
+    right: auto;
+}
+.sidr p {
+    font-size: 13px;
+    margin: 0 0 12px;
+}
+.sidr p a { color: #fff }
+.sidr>p {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.sidr ul {
+    display: block;
+    margin: 0 0 15px;
+    padding: 0;
+}
+.sidr ul li {
+    display: block;
+    margin: 0;
+    line-height: 48px;
+    border-bottom: 1px solid #c7a442;
+    cursor: pointer;
+}
+.sidr ul li a,
+.sidr ul li span {
+    padding: 0 15px;
+    display: block;
+    text-decoration: none;
+}
+#sidr-main { background: #eac14d }
+#sidr-main a {
+    color: #fff;
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+    border-left: 5px solid #eac14d;
+}
+#sidr-main a:hover {
+    color: #c7a442;
+    border-left: 5px solid #fff;
+}
+.sidr-class-fontswesome { font-family: "FontAwesome" }
+.nav .side-icon {
+    font-size: 25px;
+    margin: 15px 5px 0 10px;
+    position: relative;
+    top: 2px;
+}
+.mr5 { margin-right: 5px !important }
+
+
+/* #Buttons & Inputs
+================================================== */
+
+a.btn,
+a.btn:visited,
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="text"] {
+	-webkit-appearance: none;
+    outline: none;
+    box-shadow: 0 -4px 0px #c7a442 inset;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 100%;
+    height: 90px;
+    background: #fff;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #eac14d;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #eac14d;
+    width: 100%;
+    text-align: left;
+    text-shadow: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    background: #fff;
+	-webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+
+a.btn,
+a.btn:visited,
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] { cursor: pointer }
+
+a.btn:hover,
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
+	-webkit-appearance: none;
+    color: #eac14d;
+    background: #fff;
+    box-shadow: 0 -2px 0px #c7a442 inset;
+	-webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+a.btn:focus,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus { box-shadow: 0 1px 0px #c7a442 inset !important }
+input[type="text"]:focus {
+    box-shadow: 0 0px 0px #c7a442 inset;
+    border: none;
+}
+
+.mfp-container button {box-shadow:none !important}
+
+
+/* #Titles
+================================================== */
+
+h3.white-title { color: #fff; padding-top:40px }
+h3.white-title .title-icon { color: #eac14d }
+h3.white-title-alt { color: #fff; padding-top:40px }
+h3.white-title-alt .title-icon { color: #444 }
+h3.title { color: #eac14d; padding-top:40px  }
+h3.title .title-icon { color: #444 }
+.title-row { padding: 25px 0 }
+h3 {
+    color: #333;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 35px;
+    font-weight: 400;
+    text-align: center;
+}
+h5 {
+    color: #333;
+    font-weight: normal;
+    text-align: center;
+}
+
+
+/* #Header Section
+================================================== */
+
+#mobile-header { display: block }
+
+.header-container {
+    position: fixed;
+    top:0; 
+	right:0;
+    z-index: 100;
+    width: 100%;
+    border-bottom: 2px solid #c7a442;
+}
+h1.intro-title {
+    text-align: center;
+    font-size: 50px;
+    color: #181818;
+    line-height: 120px;
+    font-weight: 700;
+    letter-spacing: -.03em;
+    background: #fff;
+    width: 100%;
+    margin: 0;
+}
+h1.intro-title span { font-weight: 400 }
+
+#mobile-header {
+    position: absolute;
+    top: 0px;
+    left: -20px;
+}
+#mobile-header i {
+    background: #eac14d;
+    position: absolute;
+    top: 0px;
+    left: 20px;
+}
+.flexslider.fade-slider {
+	margin-top:200px
+}
+
+
+
+/* #Slider Section
+================================================== */
+
+
+
+
+.slider-container {
+    margin-top: 120px;
+    background: url(../images/backgrounds/04.jpg) no-repeat center center fixed;
+	
+   	-webkit-background-size: 100%; 
+    -moz-background-size: 100%; 
+    -o-background-size: 100%; 
+    background-size: 100%; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-size: cover; 
+	
+}
+
+.touch .slider-container { background-attachment:scroll }
+
+
+/* #Purchase Section
+================================================== */
+
+.purchase-section {
+    width: 100%;
+    background: #eac14d;
+	padding-top:40px;
+	padding-bottom:20px
+}
+
+.homepage-buttons .button .fa-icon {
+    font-size: 50px;
+    float: left;
+    margin-right: 15px;
+	
+}
+.homepage-buttons .button { padding: 20px 0px  0px 20px; text-transform:none }
+.homepage-buttons a { font-size: 25px !important }
+.button span {
+    font-size: 10px;
+    font-weight: bold;
+    display: block;
+    color: #333;
+    font-style: normal;
+	text-transform:uppercase
+}
+
+
+/* #Features Section
+================================================== */
+
+.features-section { 
+	background: #E9F0F4; 
+	padding-bottom:20px !important 
+}
+.services-column {
+    text-align: center;
+    color: #333;
+}
+.services-column .hi-icon-wrap { padding: 0px }
+.services-column i {
+    font-size: 50px !important;
+    display: block !important;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #eac14d !important;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+.services-column h4 span {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+/* #Screenshots Section
+================================================== */
+
+.screenshots-section {
+    width: 100%;
+    background: #eac14d;
+    padding-bottom:40px !important
+}
+.screenshots-section img {
+    box-shadow: 0 0 0 10px rgba(255,255,255,0);
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.screenshots-section img:hover {
+    box-shadow: 0 0 0 10px rgba(255,255,255,0.4);
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+
+/* #Testimonials Section
+================================================== */
+
+.testimonials-section {
+    padding-top: 80px;
+	padding-bottom:80px;
+    text-align: center;
+    color: #fff;
+    background: url(../images/backgrounds/15.jpg);
+    background-attachment:fixed;
+   	-webkit-background-size: 100%; 
+    -moz-background-size: 100%; 
+    -o-background-size: 100%; 
+    background-size: 100%; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-size: cover; 
+}
+.touch .testimonials-section { background-attachment:scroll }
+.testimonials-section .flex-control-nav { margin-left: -10px }
+.testimonials-section h1 {color:#181818}
+
+/* #Team Section
+================================================== */
+
+.team-section {
+    color: #333;
+    text-align: center;
+    background: #fff;
+}
+.team-section img {
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+	 max-width: 100%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%  
+}
+.team-section i { font-size: 30px }
+.team-section .columns:hover .team-surround img {
+	box-shadow: 0 0 0 10px rgba(233,240,244, 1.0);
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out
+}
+
+.team-section h5 { font-size:20px; padding:15px 0 10px 0 }
+
+
+/* #Video Section
+================================================== */
+
+.video-section {
+    background: url(../images/backgrounds/05.jpg);
+   background-attachment:fixed;
+   	-webkit-background-size: 100%; 
+    -moz-background-size: 100%; 
+    -o-background-size: 100%; 
+    background-size: 100%; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-size: cover; 
+    
+    padding-bottom: 40px;
+    text-align: center;
+    color: #fff;
+}
+.touch .video-section { background-attachment:scroll }
+
+
+/* #Newletter Signup Section
+================================================== */
+
+.newsletter-section {
+    background: url(../images/backgrounds/04.jpg);
+    background-attachment:fixed;
+   	-webkit-background-size: 100%; 
+    -moz-background-size: 100%; 
+    -o-background-size: 100%; 
+    background-size: 100%; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-size: cover; 
+    min-height: 350px;
+    text-align: center;
+    color: #fff;
+}
+.touch .newsletter-section { background-attachment:scroll }
+.email-success { font-size: 30px }
+.email-success i {
+    font-size: 100px;
+    color: #eac14d;
+    line-height: 130px;
+}
+
+
+/* #Stay Connected Section
+================================================== */
+
+.connected-section {
+    width: 100%;
+    background: #333;
+    min-height: 150px;
+}
+
+
+/* #Twitter Feed Section
+================================================== */
+
+.twitter-section {
+    padding-top: 80px;
+    min-height: 300px;
+    text-align: center;
+}
+#jstwitter { width: 100% }
+#jstwitter .tweet {
+    font-size: 25px;
+    line-height: 35px;
+	margin-bottom:20px;
+}
+#jstwitter i { font-size: 50px }
+#jstwitter i {
+    font-size: 40px;
+    color: #eac14d;
+}
+#jstwitter .tweet .time {
+    font-size: 10px;
+    font-style: italic;
+    color: #666;
+	display:block
+}
+
+
+/* #Footer Credits Section
+================================================== */
+
+.footer-bar {
+    width: 100%;
+    background: #181818;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    padding: 15px 0;
+    font-size: 11px;
+}
+
+
+/* #Icon Effects
+================================================== */
+
+.icon-effect a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: 100;
+}
+.icon-effect-wrap {
+    text-align: center;
+    margin: 0 auto;
+    padding: 2em 0 3em;
+}
+.icon-effect {
+    display: inline-block;
+    font-size: 0px;
+    cursor: pointer;
+    margin: 15px 30px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+.icon-effect:after {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    content: '';
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.icon-effect:before {
+    speak: none;
+    font-size: 48px;
+    line-height: 90px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    display: block;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Effect 1 for social icons*/
+.icon-effect-effect-1 .icon-effect {
+    background: rgba(255,255,255,0.1);
+    -webkit-transition: background 0.2s, color 0.2s;
+    -moz-transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, color 0.2s;
+}
+.icon-effect-effect-1 .icon-effect:after {
+    top: -7px;
+    left: -7px;
+    padding: 7px;
+    box-shadow: 0 0 0 4px #fff;
+    -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+    -webkit-transform: scale(.8);
+    -moz-transition: -moz-transform 0.2s, opacity 0.2s;
+    -moz-transform: scale(.8);
+    -ms-transform: scale(.8);
+    transition: transform 0.2s, opacity 0.2s;
+    transform: scale(.8);
+    opacity: 0;
+}
+.no-touch .icon-effect:hover {
+    background: rgba(255,255,255,1);
+    color: #eac14d;
+}
+.no-touch .icon-effect:hover:after {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Effect 2 */
+.icon-effect-effect-2 .icon-effect {
+    -webkit-transition: box-shadow 0.2s;
+    -moz-transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s;
+}
+.icon-effect-effect-2 .icon-effect:after {
+    top: 0;
+    left: 0;
+    padding: 0;
+    box-shadow: 0 0 0 3px #fff;
+    -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+    -moz-transition: -moz-transform 0.2s, opacity 0.2s;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+/* Effect 2a for services */
+.services-column:hover .icon-effect-effect-2a .icon-effect:after {
+    -webkit-transform: scale(0.85);
+    -moz-transform: scale(0.85);
+    -ms-transform: scale(0.85);
+    transform: scale(0.85);
+    opacity: 0.5;
+}
+.services-column:hover .icon-effect-effect-2a .icon-effect,
+.services-column .icon-effect-effect-2a .icon-effect:hover {
+    box-shadow: 0 0 0 10px rgba(255,255,255,1);
+    color: #fff;
+    cursor: inherit !important;
+    background: none !important;
+}
+
+/* Effect 2b for nav icon */
+.no-touch .icon-effect-effect-2b .icon-effect:hover:after {
+    -webkit-transform: scale(0.85);
+    -moz-transform: scale(0.85);
+    -ms-transform: scale(0.85);
+    transform: scale(0.85);
+}
+.no-touch .icon-effect-effect-2b .icon-effect:hover { color: #fff }
+
+
+/* #Media Queries
+================================================== */
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) { 
+    
+}
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) { 
+    
+}
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) { 
+    
+}
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) { 
+	.purchase-section div.homepage-buttons { padding-bottom:10px }
+	.screenshots-section img { margin-bottom:20px }
+	.screenshots-section .screenshots-row { margin-bottom:0px }
+	.newsletter-section .news-col { padding-bottom:10px }
+	.connected-section .icon-effect { margin: 15px 23px }
+	#mobile-header .icon-effect:before { font-size: 30px; line-height: 55px }
+	#mobile-header .icon-effect { width: 50px; height: 50px; top:-5px; left:0px }
+    
+}
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) { 
+    .purchase-section div.homepage-buttons { padding-bottom:10px }
+	.screenshots-section img { margin-bottom:20px }
+	.screenshots-section .screenshots-row { margin-bottom:0px }
+	.newsletter-section .news-col { padding-bottom:10px }
+	.connected-section .icon-effect { margin: 15px 23px }
+	h3 { font-size:33px }
+	#mobile-header .icon-effect:before { font-size: 30px; line-height: 55px }
+	#mobile-header .icon-effect { width: 50px; height: 50px; top:-5px; left:0px }
+
+}
+
+/* #Internet Explorer Adjustments
+================================================== */
+
+.lt-ie9 a.btn,
+.lt-ie9 a.btn:visited,
+.lt-ie9 .button,
+.lt-ie9 button,
+.lt-ie9 input[type="submit"],
+.lt-ie9 input[type="reset"],
+.lt-ie9 input[type="button"],
+.lt-ie9 input[type="text"] {
+	border-bottom:4px solid #c7a442
+}
+
+.lt-ie9 a.btn:hover,
+.lt-ie9 .button:hover,
+.lt-ie9 button:hover,
+.lt-ie9 input[type="submit"]:hover,
+.lt-ie9 input[type="reset"]:hover,
+.lt-ie9 input[type="button"]:hover {
+	border-bottom:2px solid #c7a442
+}
+
+.lt-ie9 input[type="text"] {
+	line-height:45px
+}
+
+.lt-ie9 .services-column .icon-effect-wrap i  {
+	text-align:center;
+	position:relative; 
+	left:20px
+}
+
+.lt-ie9 .screenshots-section img {
+    border:10px solid #eac14d
+}
+
+.lt-ie9 .screenshots-section img:hover {
+    border:10px solid #75d6c3
+}
+
+.lt-ie9 #mobile-header i {
+	background: #eac14d; 
+   	padding-left:20px;
+   	width:65px;
+}
+
+.lt-ie9 .connected-section i {
+	position:relative; 
+	left:30px
+}

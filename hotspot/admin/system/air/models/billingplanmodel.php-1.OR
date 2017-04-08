@@ -1,0 +1,642 @@
+<?php
+
+class Billingplanmodel extends CI_Model
+{
+	function __construct()
+	{
+		parent::__construct();
+
+		//table name
+		$this->_table='billingplan';
+		$this->_table_radgroupreply = 'radgroupreply';
+		$this->_table_radgroupcheck = 'radgroupcheck';
+		$this->_table_radreply = 'radreply';
+		$this->_table_radcheck = 'radcheck';
+		$this->_table_radacct = 'radacct';		
+		$this->_table_radusergroup = 'radusergroup';
+		$this->_table_voucher = 'voucher';
+		$this->load->model('gologinmodel');
+		$this->load->library('globals');
+		
+		
+		// Ajax
+		$this->sTable = "billingplan";
+		$this->aColumns = array('id','name', 'profile', 'amount', 'valid_for', 'price', 'bw_download', 'bw_upload' );
+		
+	}
+
+	function getBillingPlan($fields = null, $limit = null, $where = null)
+	{
+		
+		($fields != null) ? $this->db->select($fields) :'';
+		
+		($where != null) ? $this->db->where($where) : '';
+		
+		($limit !=null ) ? $this->db->limit($limit['start'],$limit['end']) :'';
+		
+		//return the query string
+		return $this->db->get($this->_table);
+
+	}
+
+	/**
+	 * สร้างกลุ่มใหม่
+	 *
+	 */
+	function BillingPlan($post_data)
+	{
+if($post_data['profile']=='time'||$post_data['profile']=='timeout'||$post_data['profile']=='daily'||$post_data['profile']=='monthly'||$post_data['profile']=='packets'||$post_data['profile']=='packets_day'||$post_data['profile']=='packets_month')
+			{
+					$post_data['valid_for']=$post_data['valid_for']*1000;
+				}
+		if($this->uri->segment(3)=='editgroup')
+		{
+			$update = TRUE;
+			// กำหนดชื่อกลุ่มเดิม
+			$groupname = $this->uri->segment(4);
+		}
+		else
+		{
+			// กำหนดชื่อกลุ่มเสมือน เป็นวันที่และเวลา
+			$groupname = date("YmdHis");
+		}
+	
+		if(($this->billingplanmodel->check_duplicate_billingplan($post_data['name'])==TRUE) || (isset($update)))
+		{
+		
+			if ($this->config->item('admin_price_input') == 'converted' )
+			{
+				$post_data['price'] = str_replace($this->config->item('currency_symbol'),"",$post_data['price']);
+				$post_data['price'] = str_replace($this->config->item('thousands_separator'),"",$post_data['price']);
+				$post_data['price'] = str_replace($this->config->item('decimal_separator'),".",$post_data['price']);
+			}
+
+			// นำชื่อกลุ่ม และไอดีของ ผู้ดูแลระบบ เก็บในตัวแปรอาเรย์ ต่าง ๆ
+			$post_data['groupname'] = $groupname;
+			$data['groupname'] = $groupname;
+			$post_data['created_by'] = $this->session->userdata('username');
+			
+			// เริ่มการทำงาน ดาต้าเบส ทรานซิชั่น
+			$this->db->trans_start();
+			
+			// สร้าง หรืออัพเดตข้อมูลกลุ่มลงในฐานข้อมูล billingplans
+			if(isset($update))
+			{
+				$billingplan_name = $this->billingplanmodel->getBillingPlan('name',null,array('groupname'=>$groupname))->row();
+				$this->db->where('billingplan',$billingplan_name->name);
+				$this->db->update($this->_table_voucher,array('billingplan'=>$post_data['name']));
+
+				$this->db->where('groupname',$groupname);
+				$this->db->update($this->_table,$post_data);
+			}
+			else
+			{
+				$this->db->insert($this->_table,$post_data);
+			}
+
+			// ตัดการเชื่อมต่อเมื่อไม่มีการใช้งาน
+			if($post_data['IdleTimeout'])
+			{
+				$data['attribute'] = 'Idle-Timeout';
+				$data['op'] = ':=';
+				$data['value'] = $post_data['IdleTimeout']*60;
+				
+				//Update หรือ Insert
+				if(isset($update))
+				{
+					$this->db->where('groupname',$groupname);
+					$this->db->where('attribute', $data['attribute']);
+					$this->db->update($this->_table_radgroupreply,array('value'=>$data['value']));
+				}
+				else
+				{
+					$this->db->insert($this->_table_radgroupreply,$data);
+				}
+			}
+
+			// เวลาในการอัพเดตฐานข้อมูล
+			if($this->config->item('voucher_acct_interim_interval'))
+			{
+				$data['attribute'] = 'Acct-Interim-Interval';
+				$data['op'] = ':=';
+				$data['value'] = $this->config->item('voucher_acct_interim_interval');
+				
+				//Update หรือ Insert
+				if(isset($update))
+				{
+					$this->db->where('groupname',$groupname);
+					$this->db->where('attribute', $data['attribute']);
+					$this->db->update($this->_table_radgroupreply,array('value'=>$data['value']));
+				}
+				else
+				{
+					$this->db->insert($this->_table_radgroupreply,$data);
+				}
+			}
+			
+			// จำนวนเครื่องใช้งาน
+			$data['attribute'] = 'Simultaneous-Use';
+			$data['op'] = ':=';
+			$data['value'] = ($post_data['simultaneous']!='' && $post_data['simultaneous']!=0) ? $post_data['simultaneous'] : 1 ;
+				
+			//Update หรือ Insert
+			if(isset($update))
+			{
+				$this->db->where('groupname',$groupname);
+				$this->db->where('attribute', $data['attribute']);
+				$this->db->update($this->_table_radgroupcheck,array('value'=>$data['value']));
+			}
+			else
+			{
+				$this->db->insert($this->_table_radgroupcheck,$data);
+			}
+			
+			// เวลาในการใช้งาน
+			$data['attribute'] = 'Login-Time';
+			$data['op'] = ':=';
+			$data['value'] = $post_data['logintime'];
+				
+			//Update หรือ Insert
+			if(isset($update))
+			{
+				$this->db->where('groupname',$groupname);
+				$this->db->where('attribute', $data['attribute']);
+				$this->db->update($this->_table_radgroupcheck,array('value'=>$data['value']));
+			}
+			else
+			{
+				$this->db->insert($this->_table_radgroupcheck,$data);
+			}
+			
+			
+			// สิ้นสุดการทำงานของ ทรานซิชั่น
+			$this->db->trans_complete();
+			
+			// สร้างเทมเพลตบัตรเป็นค่าเริ่มต้น $this->_table_voucher
+			if(!isset($update)) $this->card->addPdfcard($data['groupname']);
+
+			// คืนค่าการทำงาน สำเร็จ
+			$rep['rep'] = TRUE;
+			$rep['msg'] = (isset($update)) ? sprintf($this->lang->line('group_message_success_edit'),$post_data['name']) : sprintf($this->lang->line('group_message_success'),$post_data['name']);
+			
+		}
+
+		else
+		{
+			// คืนค่าการทำงาน ไม่สำเร็จ
+			$rep['rep'] = FALSE;
+			$rep['msg'] = sprintf($this->lang->line('group_message_errorduplicate'),$post_data['name']);
+		}
+		
+		return $rep;
+		
+	}
+	
+	/**
+	 * ลบกลุ่มผู้ใช้ โดยอานค่าจาก $this->uri->segment()
+	 * 
+	 */
+	function deleteBillingPlan()
+	{		
+		$dataconfig = $this->siteconfigmodel->getConfig('global_config');
+		$register_status = $this->session->_unserialize($dataconfig->value);
+		
+		$query = $this->billingplanmodel->getBillingPlan('name, groupname','',array('groupname'=>$this->uri->segment(5)));		
+		$group = $query->row();
+		
+		if(($group->name!=$register_status['reg_group'])&&($group->groupname!='bypass')&&($group->groupname!='teacher')&&($group->groupname!='signup'))
+		{
+				$this->db->query('delete billingplan,
+							radusergroup,
+							voucher,
+							radcheck,
+							radreply,
+							radgroupreply,
+							radgroupcheck,
+							radacct,
+							card
+						from billingplan 
+						left join radusergroup on billingplan.groupname=radusergroup.groupname
+						left join voucher on billingplan.name = voucher.billingplan
+						left join radcheck on voucher.username = radcheck.username
+						left join radreply on radcheck.username = radreply.username
+						left join radgroupreply on radgroupreply.groupname = billingplan.groupname
+						left join radgroupcheck on radgroupcheck.groupname = billingplan.groupname
+						left join radacct on radacct.username = voucher.username
+						left join card on card.template_name = billingplan.groupname 
+					where billingplan.groupname ='.$this->uri->segment(5));
+	
+		} else {
+			if(($group->name==$register_status['reg_group'])&&($group->groupname=='bypass')&&($group->groupname=='teacher')&&($group->groupname=='signup'))
+			{
+			
+				$this->db->query('select *from billingplan
+						left join radusergroup on billingplan.groupname=radusergroup.groupname
+						left join voucher on billingplan.name = voucher.billingplan
+						left join radcheck on voucher.username = radcheck.username
+						left join radreply on radcheck.username = radreply.username
+						left join radgroupreply on radgroupreply.groupname = billingplan.groupname
+						left join radgroupcheck on radgroupcheck.groupname = billingplan.groupname
+						left join radacct on radacct.username = voucher.username
+						left join card on card.template_name = billingplan.groupname 
+					where billingplan.groupname ='.$this->uri->segment(5));
+			//**************************ลบข้อมูล			
+			$name=$group->name;
+			$groupname=$group->groupname;
+			//Start transaction
+			$this->db->trans_start();
+/*
+				//radcheck table
+				$this->db->where('username',$username);
+				$this->db->delete($this->_table_radcheck);
+				
+				//radreply table
+				$this->db->where('username',$username);
+				$this->db->delete($this->_table_radreply);
+				
+				//radacct
+				$this->db->where('username',$username);
+				$this->db->delete($this->_table_radacct);
+*/			
+			
+				//radusergroup
+				$this->db->where('groupname',$groupname);
+				$this->db->delete($this->_table_radusergroup);		
+				
+				//voucher
+				$this->db->where('billingplan',$name);
+				$this->db->delete($this->_table_voucher);					
+		
+				//radgroupreply
+				$this->db->where('groupname',$groupname);
+				$this->db->delete($this->_table_radgroupreply);
+				
+				//radgroupcheck
+				$this->db->where('groupname',$groupname);
+				$this->db->delete($this->_table_radgroupcheck);		
+				
+			$this->db->trans_complete();
+			//******************
+			} else {
+			$output['res'] = false;
+			$output['msg'] = sprintf($this->lang->line('group_message_group_forReg'),$group->name);
+			return $output;
+			}
+		}
+		
+		$this->db->where(array('groupname'=>$this->uri->segment(5)));
+		$iTotal = $this->db->count_all_results($this->_table);
+		
+		if($iTotal>0) 
+		{  
+			$output['res'] = false; 
+			$output['msg'] = sprintf($this->lang->line('group_message_del_error'),$group->name);
+		} else { 
+			$output['res'] = true; 
+			$output['msg'] = sprintf($this->lang->line('group_message_del_success'),$group->name);
+		}; 
+		
+		return $output;
+		
+	}
+	
+	function getBillingPlanStat()
+	{
+		
+		return $this->db->query('select b.name as billingplan,
+								b.groupname as groupname,
+								if(count(u.groupname) is not null,
+								count(u.groupname),0)as qty 
+							from billingplan b 
+							left join radusergroup u on b.groupname=u.groupname 
+							group by b.groupname;' );
+	}
+	
+	function check_duplicate_billingplan($value)
+	{
+
+		$where = array('name'=>$value);
+		
+		//check on the billingplan table
+		$query = $this->billingplanmodel->getBillingplan('name',null,$where);
+		
+		//set message if there's duplication
+		if($query->num_rows > 0)
+		{
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	function data_table()
+	{
+
+		$jdata = $this->jsonmodel->data_table($this->sTable, $this->aColumns);
+		
+		$output = $jdata['output'];
+
+		$num = 1;
+		foreach ($jdata['rResult']->result() as $r)
+		{   
+			if($r->profile=='time'||$r->profile=='timeout'||$r->profile=='daily'||$r->profile=='monthly'||$r->profile=='packets'||$r->profile=='packets_day'||$r->profile=='packets_month')
+			{
+			    $r->valid_for=$r->valid_for/1000;
+			}
+			
+			$jdata = array();
+
+			$amount = " ".$this->lang->line('group_dis_amount_'.$r->profile);
+			
+			$del_lnk = anchor('admin/group/delete/'.$r->id.'/'.$r->groupname,'<img width="16" height="16" src='.other_asset_url('delete.gif','','images').'>','class="delete" id="item_delete" gname="'.$r->name.'" info="'.sprintf($this->lang->line('group_message_del_warning'),$r->name,$r->name).'"');
+			$edit_lnk = anchor('admin/group/edit/'.$r->id.'/'.$r->groupname,'<img width="16" height="16" src='.other_asset_url('edit.png','','images').'>','class="edit" rel="form_groups" id="item_edit" gname="'.$r->groupname.'" info="'.sprintf($this->lang->line('group_message_edit'),$r->name,$r->name).'"');
+			
+			$jdata[] .= (($_GET['iDisplayStart']==0) ? '' : $_GET['iDisplayStart']/10).($num++); //$r->id;
+			$jdata[] .= $r->name;
+			$jdata[] .= $this->lang->line('group_dis_'.$r->profile);
+			$jdata[] .= $r->amount.' '.$amount;
+			$jdata[] .= $r->valid_for.' '.$this->lang->line('date_days');
+			$jdata[] .= number_format($r->price,2);
+			$jdata[] .= "<a>".$r->bw_download/1048576 ."Mbps</a>/<a style='color:red;'>".$r->bw_upload/1000 ."</a> Kbs";
+			$jdata[] .= anchor('admin/design/'.$r->groupname, img(array('src'=>other_asset_url('card_icon.png','','images'),'width'=>'16','height'=>'16')),'id="iframe_fancybox" class="card_design"').' '.$edit_lnk.' '.$del_lnk;
+			
+			$output['aaData'][] = $jdata;
+			
+		}
+		
+		return json_encode( $output );
+		
+	}
+	
+	function changeGroup($username, $group)
+	{  
+	$this->load->model('usermodel');
+	$this->gologinmodel->checkOnlinedie($username);
+		$billingplan = $this->billingplanmodel->getBillingPlan(null, null,array('groupname'=>$group))->row();
+		$userdata=$this->usermodel->getVoucher(null,array('username'=>$username))->row();
+		//รูปแบบการเข้ารหัส
+		$global = $this->usermodel->getVoucher('encryption',array('username'=>$username));
+		$val = $global->row();
+		
+		$user['username']=$userdata->username;
+		$user['password']=$userdata->password;
+		$valid_for= $billingplan->valid_for;
+	
+		//Start transaction
+		$this->db->trans_start();
+		//ลบคุณสมบัติ
+          		//radcheck table
+				$this->db->where('username',$username);
+				$this->db->delete($this->_table_radcheck);
+				
+				//radreply table
+				$this->db->where('username',$username);
+				$this->db->delete($this->_table_radreply);
+				
+				
+		//-----------------------------------------------		
+		//สร้างคุณสมบัติ		
+					//radcheck table
+					$radcheck = array(
+									'username'=>$user['username'],
+									'attribute'=>'Password',
+									'op'=>':=',
+									'value'=>encryption($user['password'],$val->encryption)
+									);
+					$this->db->insert($this->_table_radcheck,$radcheck);
+					
+					//radcheck table
+					$radcheck = array(
+									'username'=>$user['username'],
+									'attribute'=>'Auth-Type',
+									'op'=>':=',
+									'value'=>'Local'
+									);
+					$this->db->insert($this->_table_radcheck,$radcheck);
+					
+					$valid = $this->globals->conv_date($valid_for);
+
+					$radcheck = array(
+									'username'=>$user['username'],
+									'attribute'=>'Expiration',
+									'op'=>':=',
+									'value'=>$valid['radcheck']
+									);
+					$this->db->insert($this->_table_radcheck,$radcheck);
+
+					$radreply = array(
+									'username'=>$user['username'],
+									'attribute'=>'WISPr-Session-Terminate-Time',
+									'op'=>':=',
+									'value'=>$valid['radreply']
+									);
+					$this->db->insert($this->_table_radreply, $radreply);
+					
+					/**********************************/
+					/*		กำหนดคุณสมบัตรของผู้ใช้			  */
+					/**********************************/
+					// กำหนดอัตราดาวน์โหลด
+					$radreply_down = array(
+									'username'=>$user['username'],
+									'attribute'=>'WISPr-Bandwidth-Max-Down',
+									'op'=>':=',
+									'value'=>$billingplan->bw_download
+								);
+					$this->db->insert($this->_table_radreply,$radreply_down);
+
+					// กำหนดอัตราอัพโหลด
+					$radreply_up = array(
+									'username'=>$user['username'],
+									'attribute'=>'WISPr-Bandwidth-Max-Up',
+									'op'=>':=',
+									'value'=>$billingplan->bw_upload
+								);
+					$this->db->insert($this->_table_radreply,$radreply_up);
+
+					$radreply_re = array(
+									'username'=>$user['username'],
+									'attribute'=>'WISPr-Redirection-URL',
+									'op'=>':=',
+									'value'=>$billingplan->redirect_url
+								);
+					$this->db->insert($this->_table_radreply,$radreply_re);
+					
+					// กำหนดโปรไฟล์ชั่วโมงใช้งาน
+					if($billingplan->profile=='time')
+					{	
+						$time_data = array(
+									'username'=>$user['username'],
+									'attribute'=>'Max-All-Session',
+									'op'=>':=',
+									'value'=>$billingplan->amount*3600
+								);
+						$this->db->insert($this->_table_radcheck,$time_data);
+						$this->db->insert($this->_table_radreply,$time_data);
+
+						// กำหนด วัน เริมจากการไช้งานวันแรก  วันหมดอายุ 365 ชวันนับจากเริ่มไช้งงาน 1 วัน สำหรับกลุ่มชั่วโมง ลงใน Check
+						$time_data['attribute']='Expire-After';
+						$time_data['value'] = $billingplan->valid_for*3600*24/1000;
+
+						$this->db->insert($this->_table_radcheck,$time_data);
+					}
+					
+					// กำนหดโปรไฟล์จำนวนวันใช้งาน นับจากวันเริ่มใช้
+					if($billingplan->profile=='timetofinish')
+					{
+						$timetofinish_data = array(
+									'username'=>$user['username'],
+									'attribute'=>'Expire-After',
+									'op'=>':=',
+									'value'=>$billingplan->amount*3600*24
+								);
+
+						$this->db->insert($this->_table_radcheck,$timetofinish_data);
+
+						$timetofinish_data['attribute']='Max-All-Session';
+
+						$this->db->insert($this->_table_radcheck,$timetofinish_data);
+						$this->db->insert($this->_table_radreply,$timetofinish_data);
+					}
+					
+					// กำหนดโปรไฟล์ชั่วโมงใช้งานต่อครั้ง
+					if($billingplan->profile=='timeout')
+					{
+					
+						$timeout_data = array(
+									'username'=>$user['username'],
+									'attribute'=>'Session-Timeout',
+									'op'=>':=',
+									'value'=>$billingplan->amount*3600
+								);
+						$this->db->insert($this->_table_radcheck,$timeout_data);
+						$this->db->insert($this->_table_radreply,$timeout_data);
+						$timeout_data['attribute']='Expire-After';
+						$timeout_data['value'] = $billingplan->valid_for*3600*24/1000;
+
+						$this->db->insert($this->_table_radcheck,$timeout_data);
+					}
+					
+					// กำหนดโปรไฟล์ชั่วโมงใช้งานต่อวัน
+					if($billingplan->profile=='daily')
+					{
+					
+						$daily_data = array(
+									'username'=>$user['username'],
+									'attribute'=>'Max-Daily-Session',
+									'op'=>':=',
+									'value'=>$billingplan->amount*3600
+								);
+						$this->db->insert($this->_table_radcheck,$daily_data);
+						$this->db->insert($this->_table_radreply,$daily_data);
+						$daily_data['attribute']='Expire-After';
+						$daily_data['value'] = $billingplan->valid_for*3600*24/1000;
+
+						$this->db->insert($this->_table_radcheck,$daily_data);
+					}
+					
+					// กำหนดโปรไฟล์ชั่วโมงใช้งานต่อเดือน
+					if($billingplan->profile=='monthly')
+					{
+					
+						$monthly_data = array(
+									'username'=>$user['username'],
+									'attribute'=>'Max-Monthly-Session',
+									'op'=>':=',
+									'value'=>$billingplan->amount*3600
+								);
+						$this->db->insert($this->_table_radcheck,$monthly_data);
+						$this->db->insert($this->_table_radreply,$monthly_data);
+						$monthly_data['attribute']='Expire-After';
+						$monthly_data['value'] = $billingplan->valid_for*3600*24/1000;
+
+						$this->db->insert($this->_table_radcheck,$monthly_data);
+					}
+					
+					// กำหนดโปรไฟล์ปริมาณข้อมูลที่ใช้
+					if($billingplan->profile=='packets')
+					{
+					
+						$packets_data = array(
+									'username'=>$user['username'],
+									'attribute'=>'Max-All-MB',
+									'op'=>':=',
+									'value'=>$billingplan->amount*1024*1024
+								);
+						$this->db->insert($this->_table_radcheck,$packets_data);
+						$packets_data['attribute']='Expire-After';
+						$packets_data['value'] = $billingplan->valid_for*3600*24/1000;
+
+						$this->db->insert($this->_table_radcheck,$packets_data);
+					}
+					
+					// กำหนดโปรไฟล์ปริมาณข้อมูลที่ใช้ ต่อวัน
+					if($billingplan->profile=='packets_day')
+					{
+					
+						$packets_day_data = array(
+									'username'=>$user['username'],
+									'attribute'=>'Mb-Per-Days',
+									'op'=>':=',
+									'value'=>$billingplan->amount*1024*1024
+								);
+						$this->db->insert($this->_table_radcheck,$packets_day_data);
+						$packets_day_data['attribute']='Expire-After';
+						$packets_day_data['value'] = $billingplan->valid_for*3600*24/1000;
+
+						$this->db->insert($this->_table_radcheck,$packets_day_data);
+					}
+
+					// กำหนดโปรไฟล์ปริมาณข้อมูลที่ใช้ ต่อเดือน
+					if($billingplan->profile=='packets_month')
+					{
+					
+						$packets_month_data = array(
+									'username'=>$user['username'],
+									'attribute'=>'Mb-Per-Month',
+									'op'=>':=',
+									'value'=>$billingplan->amount*1024*1024
+								);
+						$this->db->insert($this->_table_radcheck,$packets_month_data);
+						$packets_month_data['attribute']='Expire-After';
+						$packets_month_data['value'] = $billingplan->valid_for*3600*24/1000;
+
+						$this->db->insert($this->_table_radcheck,$packets_month_data);
+					}
+		////
+		 
+
+		 			$post_datas = $this->session->_unserialize($userdata->userprofile);
+					$profile['firstname'] 	= (isset($post_datas['firstname']) ? $post_datas['firstname'] : '');
+					$profile['lastname'] 	= (isset($post_datas['lastname']) ? $post_datas['lastname'] : '');
+					$profile['surename'] 	= (isset($post_datas['surename']) ? $post_datas['surename'] : '');
+					$profile['gender'] 		= (isset($post_datas['gender']) ? $post_datas['gender'] : '');
+					$profile['web'] 		= (isset($post_datas['web']) ? $post_datas['web'] : '');
+					$profile['money'] 		= (isset($post_data['money']) ? $post_data['money'] : 0);
+					$profile['ip'] 			= (isset($post_data['ip']) ? $post_data['ip'] : '');
+					$profile['mac'] 		= (isset($post_data['mac']) ? $post_data['mac'] : '');
+					$profile['personal_id'] = (isset($post_datas['personal_id']) ? $post_datas['personal_id'] : '');
+					$profile['phone'] 		= (isset($post_datas['phone']) ? $post_datas['phone'] : '');
+					$profile['email'] 		= (isset($post_datas['email']) ? $post_datas['email'] : '');
+					$profile['address1'] 	= (isset($post_datas['address1']) ? $post_datas['address1'] : '');
+					$profile['address2'] 	= (isset($post_datas['address2']) ? $post_datas['address2'] : '');
+					$profile['district'] 	= (isset($post_datas['district']) ? $post_datas['district'] : '');
+					$profile['amphur'] 		= (isset($post_datas['amphur']) ? $post_datas['amphur'] : '');
+					$profile['province'] 	= (isset($post_datas['province']) ? $post_datas['province'] : '');
+					$profile['note'] 		= (isset($post_datas['note']) ? $post_datas['note'] : '');
+					$profile['billingplan'] = $billingplan->name;
+					$profile['pic_upload'] 	= (isset($post_data['file_name']) ? UPLOAD.$this->config->item('user_folder').$post_data['username'].'/'.$post_data['file_name'] : 'assets/images/noicon.jpg');
+
+					
+		$voucher_change['profile']=$this->session->_serialize($profile);
+		$voucher_change['billingplan']	= $billingplan->name;
+		$this->db->where('username',$user['username'])
+			 ->update($this->_table_voucher,$voucher_change);
+		$this->db->where('username',$username);
+		$this->db->update($this->_table_radusergroup,array('groupname'=>$billingplan->groupname));
+		
+		$this->db->where('username',$username);
+		$this->db->update($this->_table_voucher,$voucher_change);
+		$this->db->trans_complete();
+	}
+	
+}
